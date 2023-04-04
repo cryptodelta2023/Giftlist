@@ -3,4 +3,4 @@
 require 'roda'
 require 'json'
 
-require_relative '../models/user_doc'
+require_relative '../models/list_doc'
