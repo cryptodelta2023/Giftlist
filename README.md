@@ -6,9 +6,9 @@ API to store and retrieve confidential development files (configuration, credent
 All routes return Json
 
 - GET `/`: Root route shows if Web API is running
-- GET `api/v1/user_doc/`: returns all confiugration IDs
-- GET `api/v1/user_doc/[ID]`: returns details about a single document with given ID
-- POST `api/v1/user_doc/`: creates a new document
+- GET `api/v1/list_doc/`: returns all confiugration IDs
+- GET `api/v1/list_doc/[ID]`: returns details about a single document with given ID
+- POST `api/v1/list_doc/`: creates a new document
 
 ## Install
 
