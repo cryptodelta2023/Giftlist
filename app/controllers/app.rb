@@ -20,7 +20,7 @@ module GiftList
 
       routing.root do
         response.status = 200
-        { message: 'CredenceAPI up at /api/v1' }.to_json
+        { message: 'GiftListAPI up at /api/v1' }.to_json
       end
 
       routing.on 'api' do
@@ -47,7 +47,7 @@ module GiftList
               new_data = JSON.parse(routing.body.read)
               new_list = List.new(new_data)
 
-              if new_doc.save
+              if new_list.save
                 response.status = 201
                 { message: 'Giftlist saved', id: new_list.id }.to_json
               else
