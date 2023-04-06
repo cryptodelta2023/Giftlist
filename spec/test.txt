@@ -1,0 +1,34 @@
+# this file created by shuan
+# proposed structure of storing gift info, divided by users
+Json_List = {
+    'user1':
+    [
+        {
+            id:'gift1_id',
+            giftname:,
+            type:,
+            description:
+        },
+        {
+            id:'gift2_id',
+            giftname:,
+            type:,
+            description:
+        }
+    ],
+    'user2':
+    [
+        {
+            id:'gift1_id',
+            giftname:,
+            type:,
+            description:
+        },
+        {
+            id:'gift2_id',
+            giftname:,
+            type:,
+            description:
+        }
+    ]
+}
