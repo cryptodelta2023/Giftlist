@@ -3,7 +3,7 @@
 require 'roda'
 require 'json'
 
-module GiftList
+module GiftListApp
   # Web controller for Credence API
   class Api < Roda
     plugin :halt
