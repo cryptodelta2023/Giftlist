@@ -18,36 +18,74 @@ module GiftList
       @api_root = 'api/v1'
       routing.on @api_root do
         routing.on 'giftlists' do
-          @list_route = "#{@api_root}/list/#{user_id}/giftlist" # 待改
+          @list_route = "#{@api_root}/giftlists"
 
-          
-          # GET api/v1/giftlists/[id]
-          routing.get String do |uswid|
-            response.status = 200
-            List.find(id).to_json
+          routing.on String do |list_id|
+            routing.on 'giftinfos' do
+              @info_route = "#{@api_root}/projects/#{list_id}/giftinfos"
+              # GET api/v1/giftlists/[list_id]/giftinfos/[info_id]
+              routing.get String do |info_id|
+                info = GiftInfo.where(giftlist_id: list_id, id: info_id).first # giftlist_id:FK from giftlist
+                info ? info.to_json : raise('Gift Information not found')
+              rescue StandardError => e
+                routing.halt 404, { message: e.message }.to_json
+              end
 
-          rescue StandardError
-            routing.halt 404, { message: 'Giftlist not found' }.to_json
+              # GET api/v1/giftlists/[list_id]/giftinfos
+              routing.get do
+                output = { data: GiftList.first(list_id:).giftinfos } # giftinfos 對應到 002_giftinfos_create.rb
+                JSON.pretty_generate(output)
+              rescue StandardError
+                routing.halt 404, message: 'Could not find gift informations'
+              end
+
+              # POST api/v1/giftlists/[ID]/giftinfos
+              routing.post do
+                new_data = JSON.parse(routing.body.read)
+                giftlist = GiftList.first(list_id)
+                new_info = giftlist.add_giftinfo(new_data)
+
+                if new_info
+                  response.status = 201
+                  response['Location'] = "#{@info_route}/#{new_info.info_id}"
+                  { message: 'Document saved', data: new_info }.to_json
+                else
+                  routing.halt 400, 'Could not save gift information'
+                end
+
+              rescue StandardError
+                routing.halt 500, { message: 'Database error' }.to_json
+              end
+            end
+
+            # GET api/v1/giftlists/[ID]
+            routing.get do
+              giftlist = GiftList.first(id: proj_id)
+              giftlist ? giftlist.to_json : raise('Giftlist not found')
+            rescue StandardError => e
+              routing.halt 404, { message: e.message }.to_json
+            end
           end
 
           # GET api/v1/giftlists
           routing.get do
-            response.status = 200
-            output = { list_ids: List.all }
+            output = { data: GiftList.all }
             JSON.pretty_generate(output)
+          rescue StandardError
+            routing.halt 404, { message: 'Could not find giftlist' }.to_json
           end
 
           # POST api/v1/giftlists
           routing.post do
             new_data = JSON.parse(routing.body.read)
-            new_list = List.new(new_data)
+            new_gistlist = GiftList.new(new_data)
+            raise('Could not save giftlist') unless new_gistlist.save
 
-            if new_list.save
-              response.status = 201
-              { message: 'Giftlist saved', id: new_list.id }.to_json
-            else
-              routing.halt 400, { message: 'Could not save giftlist' }.to_json
-            end
+            response.status = 201
+            response['Location'] = "#{@list_route}/#{new_gistlist.list_id}"
+            { message: 'Giftlist saved', data: new_gistlist }.to_json
+          rescue StandardError => e
+            routing.halt 400, { message: e.message }.to_json
           end
         end
       end
