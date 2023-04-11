@@ -3,7 +3,7 @@
 require 'json'
 require 'sequel'
 
-module GiftList
+module GiftListApp
   # Models a secret document
   class GiftInfo < Sequel::Model
     many_to_one :giftlist
