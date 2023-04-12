@@ -5,7 +5,7 @@ require 'sequel'
 
 module GiftListApp
   # Models a secret document
-  class GiftInfo < Sequel::Model
+  class Giftinfo < Sequel::Model
     many_to_one :giftlist
 
     plugin :timestamps

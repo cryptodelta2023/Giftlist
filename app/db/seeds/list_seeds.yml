@@ -1,7 +1,0 @@
----
-- giftname: 'secrets.yml'
-  type: 'AWS credentials'
-  description: 'adslkdasflkhjkdfs'
-- giftname: 'another.yml'
-  type: 'configuration'
-  description: "---\n-key: something\n  another: value"

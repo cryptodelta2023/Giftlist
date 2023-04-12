@@ -5,7 +5,7 @@ require 'sequel'
 
 module GiftListApp
   # Models a project
-  class GiftList < Sequel::Model
+  class Giftlist < Sequel::Model
     one_to_many :giftinfos
     plugin :association_dependencies, giftinfos: :destroy
 

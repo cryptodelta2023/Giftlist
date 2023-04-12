@@ -25,7 +25,7 @@ module GiftListApp
               @info_route = "#{@api_root}/giftlists/#{list_id}/giftinfos"
               # GET api/v1/giftlists/[list_id]/giftinfos/[info_id]
               routing.get String do |info_id|
-                info = GiftInfo.where(giftlist_id: list_id, id: info_id).first # giftlist_id:FK from giftlist
+                info = Giftinfo.where(giftlist_id: list_id, id: info_id).first # giftlist_id:FK from giftlist
                 info ? info.to_json : raise('Gift Information not found')
               rescue StandardError => e
                 routing.halt 404, { message: e.message }.to_json
@@ -33,7 +33,7 @@ module GiftListApp
 
               # GET api/v1/giftlists/[list_id]/giftinfos
               routing.get do
-                output = { data: GiftList.first(id: list_id).giftinfos } # giftinfos 對應到 002_giftinfos_create.rb
+                output = { data: Giftlist.first(id: list_id).giftinfos } # giftinfos 對應到 002_giftinfos_create.rb
                 JSON.pretty_generate(output)
               rescue StandardError
                 routing.halt 404, message: 'Could not find gift informations'
@@ -42,7 +42,7 @@ module GiftListApp
               # POST api/v1/giftlists/[ID]/giftinfos
               routing.post do
                 new_data = JSON.parse(routing.body.read)
-                giftlist = GiftList.first(id: list_id)
+                giftlist = Giftlist.first(id: list_id)
                 new_info = giftlist.add_giftinfo(new_data)
 
                 if new_info
@@ -60,7 +60,7 @@ module GiftListApp
 
             # GET api/v1/giftlists/[ID]
             routing.get do
-              giftlist = GiftList.first(id: list_id)
+              giftlist = Giftlist.first(id: list_id)
               giftlist ? giftlist.to_json : raise('Giftlist not found')
             rescue StandardError => e
               routing.halt 404, { message: e.message }.to_json
@@ -69,7 +69,7 @@ module GiftListApp
 
           # GET api/v1/giftlists
           routing.get do
-            output = { data: GiftList.all }
+            output = { data: Giftlist.all }
             JSON.pretty_generate(output)
           rescue StandardError
             routing.halt 404, { message: 'Could not find giftlist' }.to_json
@@ -78,7 +78,7 @@ module GiftListApp
           # POST api/v1/giftlists
           routing.post do
             new_data = JSON.parse(routing.body.read)
-            new_gistlist = GiftList.new(new_data)
+            new_gistlist = Giftlist.new(new_data)
             raise('Could not save giftlist') unless new_gistlist.save
 
             response.status = 201
