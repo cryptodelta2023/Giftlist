@@ -17,7 +17,7 @@ module GiftListApp
           data: {
             type: 'giftinfo',
             attributes: {
-              info_id:,
+              id:,
               giftname:,
               url:,
               description:

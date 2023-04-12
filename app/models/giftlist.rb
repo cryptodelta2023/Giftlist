@@ -18,8 +18,9 @@ module GiftListApp
           data: {
             type: 'giftlist',
             attributes: {
-              list_id:,
-              list_name:
+              id:,
+              list_name:,
+              list_owner:
             }
           }
         }, options
