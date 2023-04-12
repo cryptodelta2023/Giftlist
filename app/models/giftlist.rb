@@ -5,7 +5,7 @@ require 'sequel'
 
 module GiftListApp
   # Models a project
-  class GiftList < Sequel::Model
+  class Giftlist < Sequel::Model
     one_to_many :giftinfos
     plugin :association_dependencies, giftinfos: :destroy
 
@@ -18,8 +18,9 @@ module GiftListApp
           data: {
             type: 'giftlist',
             attributes: {
-              list_id:,
-              list_name:
+              id:,
+              list_name:,
+              list_owner:
             }
           }
         }, options
