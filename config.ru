@@ -1,4 +1,6 @@
 # frozen_string_literal: true
 
-require './app/controllers/app'
-run GiftList::Api.freeze.app
+require './require_app'
+require_app
+
+run GiftListApp::Api.freeze.app
