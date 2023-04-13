@@ -4,7 +4,7 @@ require 'roda'
 require 'json'
 
 module GiftListApp
-  # Web controller for Credence API
+  # Web controller for GiftListApp API
   class Api < Roda
     plugin :halt
 
@@ -78,12 +78,12 @@ module GiftListApp
           # POST api/v1/giftlists
           routing.post do
             new_data = JSON.parse(routing.body.read)
-            new_gistlist = Giftlist.new(new_data)
-            raise('Could not save giftlist') unless new_gistlist.save
+            new_giftlist = Giftlist.new(new_data)
+            raise('Could not save giftlist') unless new_giftlist.save
 
             response.status = 201
-            response['Location'] = "#{@list_route}/#{new_gistlist.id}"
-            { message: 'Giftlist saved', data: new_gistlist }.to_json
+            response['Location'] = "#{@list_route}/#{new_giftlist.id}"
+            { message: 'Giftlist saved', data: new_giftlist }.to_json
           rescue StandardError => e
             routing.halt 400, { message: e.message }.to_json
           end

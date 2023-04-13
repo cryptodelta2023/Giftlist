@@ -1,0 +1,5 @@
+---
+- name: Test Project
+  repo_url: https://github.com/giftlist/test_proj
+- name: Another Project
+  repo_url: https://github.com/giftlist/another_proj
