@@ -42,7 +42,7 @@ describe 'Test Giftinfo Handling' do
   end
 
   it 'SAD: should return error if unknown giftinfo requested' do
-    proj = GiftListApp::Giftlist.first
+    giftlist = GiftListApp::Giftlist.first
     get "/api/v1/giftlists/#{proj.id}/giftinfos/foobar"
 
     _(last_response.status).must_equal 404

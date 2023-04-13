@@ -21,8 +21,8 @@ describe 'Test Giftlist Handling' do
   end
 
   it 'HAPPY: should be able to get details of a single giftlist' do
-    existing_proj = DATA[:giftlists][1]
-    GiftListApp::Giftlist.create(existing_proj).save
+    existing_list = DATA[:giftlists][1]
+    GiftListApp::Giftlist.create(existing_list).save
     id = GiftListApp::Giftlist.first.id
 
     get "/api/v1/giftlists/#{id}"
@@ -30,8 +30,8 @@ describe 'Test Giftlist Handling' do
 
     result = JSON.parse last_response.body
     _(result['data']['attributes']['id']).must_equal id
-    _(result['data']['attributes']['list_name']).must_equal existing_proj['list_name']
-    _(result['data']['attributes']['list_owner']).must_equal existing_proj['list_owner']
+    _(result['data']['attributes']['list_name']).must_equal existing_list['list_name']
+    _(result['data']['attributes']['list_owner']).must_equal existing_list['list_owner']
   end
 
   it 'SAD: should return error if unknown giftlist requested' do
@@ -41,18 +41,18 @@ describe 'Test Giftlist Handling' do
   end
 
   it 'HAPPY: should be able to create new giftlists' do
-    existing_proj = DATA[:giftlists][1]
+    existing_list = DATA[:giftlists][1]
 
     req_header = { 'CONTENT_TYPE' => 'application/json' }
-    post 'api/v1/giftlists', existing_proj.to_json, req_header
+    post 'api/v1/giftlists', existing_list.to_json, req_header
     _(last_response.status).must_equal 201
     _(last_response.header['Location'].size).must_be :>, 0
 
     created = JSON.parse(last_response.body)['data']['data']['attributes']
-    proj = GiftListApp::Giftlist.first
+    giftlist = GiftListApp::Giftlist.first
 
-    _(created['id']).must_equal proj.id
-    _(created['list_name']).must_equal existing_proj['list_name']
-    _(created['list_owner']).must_equal existing_proj['list_owner']
+    _(created['id']).must_equal giftlist.id
+    _(created['list_name']).must_equal existing_list['list_name']
+    _(created['list_owner']).must_equal existing_list['list_owner']
   end
 end
