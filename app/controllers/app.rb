@@ -49,7 +49,7 @@ module GiftListApp
 
                 response.status = 201
                 response['Location'] = "#{@info_route}/#{new_info.id}"
-                { message: 'Document saved', data: new_info }.to_json
+                { message: 'Giftinfo saved', data: new_info }.to_json
               
               rescue Sequel::MassAssignmentRestriction
                 Api.logger.warn "MASS-ASSIGNMENT: #{new_data.keys}"
