@@ -8,6 +8,7 @@ module GiftListApp
   class Giftlist < Sequel::Model
     one_to_many :giftinfos
     plugin :association_dependencies, giftinfos: :destroy
+    plugin :uuid, field: :id
 
     plugin :timestamps
     plugin :whitelist_security
