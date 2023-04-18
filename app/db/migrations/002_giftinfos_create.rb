@@ -10,7 +10,7 @@ Sequel.migration do
 
       String :giftname, null: false
       String :url, null: false, default: ''
-      String :description
+      String :description_secure
 
       DateTime :created_at
       DateTime :updated_at
