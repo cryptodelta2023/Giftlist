@@ -55,10 +55,10 @@ describe 'Test Giftinfo Handling' do
       @req_header = { 'CONTENT_TYPE' => 'application/json' }
     end
 
-    it 'HAPPY: should be able to create new documents' do
+    it 'HAPPY: should be able to create new giftinfos' do
       req_header = { 'CONTENT_TYPE' => 'application/json' }
-      post "api/v1/giftlists/#{giftlist.id}/giftinfos",
-           info_data.to_json, req_header
+      post "api/v1/giftlists/#{@giftlist.id}/giftinfos",
+           @info_data.to_json, req_header
       _(last_response.status).must_equal 201
       _(last_response.header['Location'].size).must_be :>, 0
 
@@ -66,15 +66,15 @@ describe 'Test Giftinfo Handling' do
       info = GiftListApp::Giftinfo.first
 
       _(created['id']).must_equal info.id
-      _(created['giftname']).must_equal info_data['giftname']
-      _(created['url']).must_equal info_data['url']
-      _(created['description']).must_equal info_data['description']
+      _(created['giftname']).must_equal @info_data['giftname']
+      _(created['url']).must_equal @info_data['url']
+      _(created['description']).must_equal @info_data['description']
     end
 
-    it 'SECURITY: should not create documents with mass assignment' do
+    it 'SECURITY: should not create giftinfos with mass assignment' do
       bad_data = @info_data.clone
       bad_data['created_at'] = '1900-01-01'
-      post "api/v1/projects/#{@giftlist.id}/giftinfos",
+      post "api/v1/giftlists/#{@giftlist.id}/giftinfos",
            bad_data.to_json, @req_header
 
       _(last_response.status).must_equal 400
