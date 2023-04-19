@@ -10,6 +10,8 @@ module GiftListApp
     plugin :association_dependencies, giftinfos: :destroy
 
     plugin :timestamps
+    plugin :whitelist_security
+    set_allowed_columns :list_name, :list_owner
 
     # rubocop:disable Metrics/MethodLength
     def to_json(options = {})

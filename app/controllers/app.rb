@@ -8,6 +8,7 @@ module GiftListApp
   class Api < Roda
     plugin :halt
 
+    # rubocop:disable Metrics/BlockLength
     route do |routing|
       response['Content-Type'] = 'application/json'
 
@@ -39,26 +40,27 @@ module GiftListApp
                 routing.halt 404, message: 'Could not find gift informations'
               end
 
-              # POST api/v1/giftlists/[ID]/giftinfos
+              # POST api/v1/giftlists/[list_id]/giftinfos
               routing.post do
                 new_data = JSON.parse(routing.body.read)
                 giftlist = Giftlist.first(id: list_id)
                 new_info = giftlist.add_giftinfo(new_data)
+                raise 'Could not save giftinfo' unless new_info
 
-                if new_info
-                  response.status = 201
-                  response['Location'] = "#{@info_route}/#{new_info.id}"
-                  { message: 'Document saved', data: new_info }.to_json
-                else
-                  routing.halt 400, 'Could not save gift information'
-                end
+                response.status = 201
+                response['Location'] = "#{@info_route}/#{new_info.id}"
+                { message: 'Giftinfo saved', data: new_info }.to_json
 
-              rescue StandardError
-                routing.halt 500, { message: 'Database error' }.to_json
+              rescue Sequel::MassAssignmentRestriction
+                Api.logger.warn "MASS-ASSIGNMENT: #{new_data.keys}"
+                routing.halt 400, { message: 'Illegal Attributes' }.to_json
+
+              rescue StandardError => e
+                routing.halt 500, { message: e.message }.to_json
               end
             end
 
-            # GET api/v1/giftlists/[ID]
+            # GET api/v1/giftlists/[list_id]
             routing.get do
               giftlist = Giftlist.first(id: list_id)
               giftlist ? giftlist.to_json : raise('Giftlist not found')
@@ -84,8 +86,12 @@ module GiftListApp
             response.status = 201
             response['Location'] = "#{@list_route}/#{new_giftlist.id}"
             { message: 'Giftlist saved', data: new_giftlist }.to_json
+          rescue Sequel::MassAssignmentRestriction
+            Api.logger.warn "MASS-ASSIGNMENT: #{new_data.keys}"
+            routing.halt 400, { message: 'Illegal Attributes' }.to_json
           rescue StandardError => e
-            routing.halt 400, { message: e.message }.to_json
+            Api.logger.error "UNKNOWN ERROR: #{e.message}"
+            routing.halt 400, { message: 'Unknown server error' }.to_json
           end
         end
       end

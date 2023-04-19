@@ -7,8 +7,20 @@ module GiftListApp
   # Models a secret document
   class Giftinfo < Sequel::Model
     many_to_one :giftlist
-
+    
+    plugin :uuid, field: :id
     plugin :timestamps
+    plugin :whitelist_security
+    set_allowed_columns :giftname, :url, :description
+
+    # Secure getters and setters
+    def description
+      SecureDB.decrypt(description_secure)
+    end
+
+    def description=(plaintext)
+      self.description_secure = SecureDB.encrypt(plaintext)
+    end
 
     # rubocop:disable Metrics/MethodLength
     def to_json(options = {})
