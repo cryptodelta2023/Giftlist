@@ -41,8 +41,8 @@ describe 'Test Giftlist Handling' do
       _(last_response.status).must_equal 404
     end
     it 'SECURITY: should prevent basic SQL injection targeting IDs' do
-      GiftListApp::Giftlist.create(name: 'New Giftlist')
-      GiftListApp::Giftlist.create(name: 'Newer Giftlist')
+      GiftListApp::Giftlist.create(list_name: 'New Giftlist')
+      GiftListApp::Giftlist.create(list_name: 'Newer Giftlist')
       get 'api/v1/projects/2%20or%20id%3E0'
 
       # deliberately not reporting error -- don't give attacker information
@@ -66,10 +66,11 @@ describe 'Test Giftlist Handling' do
       giftlist = GiftListApp::Giftlist.first
 
       _(created['id']).must_equal giftlist.id
-      _(created['list_name']).must_equal existing_list['list_name']
-      _(created['list_owner']).must_equal existing_list['list_owner']
+      _(created['list_name']).must_equal @giftlist_data['list_name']
+      _(created['list_owner']).must_equal @giftlist_data['list_owner']
     end
-    it 'SECURITY: should not create project with mass assignment' do
+    
+    it 'SECURITY: should not create giftlist with mass assignment' do
       bad_data = @giftlist_data.clone
       bad_data['created_at'] = '1900-01-01'
       post 'api/v1/giftlists', bad_data.to_json, @req_header

@@ -50,10 +50,10 @@ module GiftListApp
                 response.status = 201
                 response['Location'] = "#{@info_route}/#{new_info.id}"
                 { message: 'Giftinfo saved', data: new_info }.to_json
-              
+
               rescue Sequel::MassAssignmentRestriction
                 Api.logger.warn "MASS-ASSIGNMENT: #{new_data.keys}"
-                routing.halt 400, {message: 'Illegal Attributes'}.to_json            
+                routing.halt 400, { message: 'Illegal Attributes' }.to_json
 
               rescue StandardError => e
                 routing.halt 500, { message: e.message }.to_json
@@ -97,5 +97,4 @@ module GiftListApp
       end
     end
   end
-  # rubocop:disable Metrics/BlockLength
 end
