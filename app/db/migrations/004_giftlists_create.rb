@@ -6,6 +6,7 @@ Sequel.migration do
   change do
     create_table(:giftlists) do
       primary_key :id
+      foreign_key :owner_id, :accounts
 
       String :list_name, unique: true, null: false
       String :list_owner

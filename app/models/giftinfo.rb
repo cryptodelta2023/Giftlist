@@ -7,9 +7,9 @@ module GiftListApp
   # Models a secret document
   class Giftinfo < Sequel::Model
     many_to_one :giftlist
-    
+
     plugin :uuid, field: :id
-    plugin :timestamps
+    plugin :timestamps, update_on_create: true
     plugin :whitelist_security
     set_allowed_columns :giftname, :url, :description
 
