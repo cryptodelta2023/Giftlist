@@ -6,9 +6,9 @@ require 'sequel'
 module GiftListApp
   # Models a project
   class Giftlist < Sequel::Model
-    many_to_one :owner, class: :'GiftList::Account'
+    many_to_one :owner, class: :'GiftListApp::Account'
     many_to_many :followers,
-                 class: :'GiftList::Account',
+                 class: :'GiftListApp::Account',
                  join_table: :accounts_giftlists,
                  left_key: :giftlist_id, right_key: :follower_id
 
