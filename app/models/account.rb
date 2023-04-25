@@ -8,16 +8,14 @@ module GiftListApp
   # Models a registered account
   class Account < Sequel::Model
     one_to_many :owned_giftlists, class: :'GiftListApp::Giftlist', key: :owner_id
-
-
-    many_to_many :collaborations,
+    many_to_many :followings,
                  class: :'GiftListApp::Giftlist',
                  join_table: :accounts_giftlists,
-                 left_key: :collaborator_id, right_key: :giftlist_id
+                 left_key: :follower_id, right_key: :giftlist_id
 
     plugin :association_dependencies,
-        owned_giftlists: :destroy,
-        collaborations: :nullify
+           owned_giftlists: :destroy,
+           followings: :nullify
 
     plugin :whitelist_security
     set_allowed_columns :username, :email, :password
@@ -25,7 +23,7 @@ module GiftListApp
     plugin :timestamps, update_on_create: true
 
     def giftlists
-      owned_giftlists + collaborations
+      owned_giftlists + followings
     end
 
     def password=(new_password)

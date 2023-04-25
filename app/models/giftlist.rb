@@ -6,12 +6,19 @@ require 'sequel'
 module GiftListApp
   # Models a project
   class Giftlist < Sequel::Model
+    many_to_one :owner, class: :'GiftList::Account'
+    many_to_many :followers,
+                 class: :'GiftList::Account',
+                 join_table: :accounts_giftlists,
+                 left_key: :giftlist_id, right_key: :follower_id
+
     one_to_many :giftinfos
+
     plugin :association_dependencies, giftinfos: :destroy
 
     plugin :timestamps
     plugin :whitelist_security
-    set_allowed_columns :list_name, :list_owner
+    set_allowed_columns :list_name
 
     # rubocop:disable Metrics/MethodLength
     def to_json(options = {})
@@ -21,8 +28,7 @@ module GiftListApp
             type: 'giftlist',
             attributes: {
               id:,
-              list_name:,
-              list_owner:
+              list_name:
             }
           }
         }, options
