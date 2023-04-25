@@ -9,8 +9,6 @@ Sequel.migration do
       foreign_key :owner_id, :accounts
 
       String :list_name, unique: true, null: false
-      String :list_owner
-
       DateTime :created_at
       DateTime :updated_at
     end
