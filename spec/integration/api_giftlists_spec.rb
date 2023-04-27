@@ -69,7 +69,7 @@ describe 'Test Giftlist Handling' do
       _(created['list_name']).must_equal @giftlist_data['list_name']
       _(created['list_owner']).must_equal @giftlist_data['list_owner']
     end
-    
+
     it 'SECURITY: should not create giftlist with mass assignment' do
       bad_data = @giftlist_data.clone
       bad_data['created_at'] = '1900-01-01'

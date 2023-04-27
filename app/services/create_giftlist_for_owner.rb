@@ -5,7 +5,7 @@ module GiftListApp
   class CreateGiftlistForOwner
     def self.call(owner_id:, giftlist_data:)
       Account.find(id: owner_id)
-             .add_owned_giftlists(giftlist_data)
+             .add_owned_giftlist(giftlist_data)
     end
   end
 end
