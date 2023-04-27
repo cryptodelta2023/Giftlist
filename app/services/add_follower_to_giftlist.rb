@@ -11,7 +11,7 @@ module GiftListApp
     def self.call(email:, giftlist_id:)
       follower = Account.first(email:)
       giftlist = Giftlist.first(id: giftlist_id)
-      raise(OwnerNotCollaboratorError) if giftlist.owner.id == follower.id
+      raise(OwnerNotFollowerError) if giftlist.owner.id == follower.id
 
       giftlist.add_follower(follower)
     end

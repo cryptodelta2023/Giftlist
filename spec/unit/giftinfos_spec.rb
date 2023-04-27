@@ -2,7 +2,7 @@
 
 require_relative '../spec_helper'
 
-describe 'Test Giftinfos Handling' do
+describe 'Test Giftinfo Handling' do
   before do
     wipe_database
 

@@ -14,7 +14,7 @@ module GiftListApp
 
     one_to_many :giftinfos
 
-    plugin :association_dependencies, giftinfos: :destroy
+    plugin :association_dependencies, giftinfos: :destroy, followers: :nullify
 
     plugin :timestamps
     plugin :whitelist_security
