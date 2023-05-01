@@ -39,9 +39,10 @@ module GiftListApp
       JSON(
         {
           type: 'account',
-          id:,
-          username:,
-          email:
+          attributes: {
+            username:,
+            email:
+          }
         }, options
       )
     end
