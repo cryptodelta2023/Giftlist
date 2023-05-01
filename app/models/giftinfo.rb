@@ -27,16 +27,15 @@ module GiftListApp
     def to_json(options = {})
       JSON(
         {
-          data: {
-            type: 'giftinfo',
-            attributes: {
-              id:,
-              giftname:,
-              url:,
-              description:
-            }
-          },
-          included: {
+          type: 'giftinfo',
+          attributes: {
+            id:,
+            giftname:,
+            url:,
+            description:
+          }
+          ,
+          include: {
             giftlist:
           }
         }, options
