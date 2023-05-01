@@ -1,0 +1,13 @@
+---
+- giftname: 'teddy bear'
+  url: 'https://github.com/giftlist/test_proj'
+  description: 'tiny'
+- giftname: 'Pencils'
+  url: 'https://github.com/giftlist/another_proj'
+  description: "blue"
+- giftname: 'coffee'
+  url: 'https://github.com/giftlist/another_proj'
+  description: "lattee"
+- giftname: 'cellphone'
+  url: 'https://github.com/giftlist/another_proj'
+  description: "iPhone15"

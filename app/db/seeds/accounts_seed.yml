@@ -1,0 +1,10 @@
+---
+- username: Fong
+  email: fong@nthu.edu.tw
+  password: mypa$$w0rd
+- username: Shuan
+  email: Shuan@nthu.edu.tw
+  password: randompass
+- username: Anita
+  email: Anita@gmail.com
+  password: passrand
