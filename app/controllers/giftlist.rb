@@ -4,7 +4,7 @@ require 'roda'
 require_relative './app'
 
 module GiftListApp
-  # Web controller for Credence API
+  # Web controller for GiftListApp API
   class Api < Roda
     # rubocop:disable Metrics/BlockLength
     route('giftlists') do |routing|
@@ -70,7 +70,7 @@ module GiftListApp
       routing.post do
         new_data = JSON.parse(routing.body.read)
         new_list = Giftlist.new(new_data)
-        raise('Could not save project') unless new_list.save
+        raise('Could not save giftlist') unless new_list.save
 
         response.status = 201
         response['Location'] = "#{@list_route}/#{new_list.id}"
