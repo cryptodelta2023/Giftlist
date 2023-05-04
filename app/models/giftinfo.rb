@@ -33,8 +33,7 @@ module GiftListApp
             giftname:,
             url:,
             description:
-          }
-          ,
+          },
           include: {
             giftlist:
           }
