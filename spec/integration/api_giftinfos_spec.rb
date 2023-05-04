@@ -22,8 +22,11 @@ describe 'Test Giftinfo Handling' do
     get "api/v1/giftlists/#{giftlist.id}/giftinfos"
     _(last_response.status).must_equal 200
 
-    result = JSON.parse last_response.body
-    _(result['data'].count).must_equal 4
+    result = JSON.parse(last_response.body)['data']
+    _(result.count).must_equal 4
+    result.each do |info|
+      _(info['type']).must_equal 'giftinfo'
+    end
   end
 
   it 'HAPPY: should be able to get details of a single giftinfo' do
@@ -35,10 +38,10 @@ describe 'Test Giftinfo Handling' do
     _(last_response.status).must_equal 200
 
     result = JSON.parse last_response.body
-    _(result['data']['attributes']['id']).must_equal info.id
-    _(result['data']['attributes']['giftname']).must_equal info_data['giftname']
-    _(result['data']['attributes']['url']).must_equal info_data['url']
-    _(result['data']['attributes']['description']).must_equal info_data['description']
+    _(result['attributes']['id']).must_equal info.id
+    _(result['attributes']['giftname']).must_equal info_data['giftname']
+    _(result['attributes']['url']).must_equal info_data['url']
+    _(result['attributes']['description']).must_equal info_data['description']
   end
 
   it 'SAD: should return error if unknown giftinfo requested' do
@@ -62,7 +65,7 @@ describe 'Test Giftinfo Handling' do
       _(last_response.status).must_equal 201
       _(last_response.header['Location'].size).must_be :>, 0
 
-      created = JSON.parse(last_response.body)['data']['data']['attributes']
+      created = JSON.parse(last_response.body)['data']['attributes']
       info = GiftListApp::Giftinfo.first
 
       _(created['id']).must_equal info.id
