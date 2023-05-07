@@ -32,7 +32,6 @@ describe 'Test Authentication Routes' do
       credentials = { username: @account_data['username'],
                       password: 'fakepassword' }
 
-      
       post 'api/v1/auth/authenticate', credentials.to_json, @req_header
       result = JSON.parse(last_response.body)
 
