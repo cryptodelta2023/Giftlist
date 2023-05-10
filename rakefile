@@ -52,7 +52,7 @@ namespace :db do
     require 'sequel'
 
     Sequel.extension :migration
-    @app = Credence::Api
+    @app = GiftListApp::Api
   end
 
   task :load_models => :load do
