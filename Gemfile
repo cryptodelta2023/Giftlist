@@ -1,10 +1,11 @@
 # frozen_string_literal: true
 
 source 'https://rubygems.org'
+ruby File.read('.ruby-version').strip
 
 # Web API
 gem 'json'
-gem 'puma', '~>5.6'
+gem 'puma', '~>6.2'
 gem 'roda', '~>3.54'
 
 # Configuration
@@ -18,23 +19,30 @@ gem 'rbnacl', '~>7.1'
 # Database
 gem 'hirb'
 gem 'sequel', '~>5.55'
-group :development, :test do
-  gem 'sqlite3', '~>1.4'
-end
 
-# Performance
-gem 'rubocop-performance'
+group :production do
+  gem 'pg'
+end
 
 # Testing
 group :test do
   gem 'minitest'
   gem 'minitest-rg'
-  gem 'rack-test'
 end
 
-# Development
-gem 'pry'
-gem 'rerun'
+# Debugging
+gem 'pry' # necessary for rake console
 
-# Quality
-gem 'rubocop'
+# Development
+group :development do
+  gem 'rerun'
+  # Quality
+  gem 'rubocop'
+  gem 'rubocop-performance'
+end
+
+group :development, :test do
+  gem 'rack-test'
+  gem 'sequel-seed'
+  gem 'sqlite3', '~>1.6'
+end

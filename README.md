@@ -23,7 +23,7 @@ bundle install
 Run the test script:
 
 ```shell
-ruby spec/api_spec.rb
+rake spec
 ```
 
 ## Execute
@@ -31,5 +31,5 @@ ruby spec/api_spec.rb
 Run this API using:
 
 ```shell
-puma
+rake run:dev
 ```

@@ -20,20 +20,16 @@ module GiftListApp
     plugin :whitelist_security
     set_allowed_columns :list_name
 
-    # rubocop:disable Metrics/MethodLength
     def to_json(options = {})
       JSON(
         {
-          data: {
-            type: 'giftlist',
-            attributes: {
-              id:,
-              list_name:
-            }
+          type: 'giftlist',
+          attributes: {
+            id:,
+            list_name:
           }
         }, options
       )
     end
-    # rubocop:enable Metrics/MethodLength
   end
 end
