@@ -4,7 +4,7 @@ require 'roda'
 require_relative './app'
 
 module GiftListApp
-  # Web controller for Credence API
+  # Web controller for Giftlisr API
   class Api < Roda
     route('auth') do |routing|
       routing.is 'authenticate' do
