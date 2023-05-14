@@ -58,12 +58,13 @@ module GiftListApp
         end
       end
 
-      # GET api/v1/giftlists
+      # GET api/v1/giftlists/
       routing.get do
-        output = { data: Giftlist.all }
-        JSON.pretty_generate(output)
+        account = Account.first(username: @auth_account['username'])
+        projects = account.projects
+        JSON.pretty_generate(data: projects)
       rescue StandardError
-        routing.halt 404, { message: 'Could not find giftlists' }.to_json
+        routing.halt 403, { message: 'Could not find any giftlists' }.to_json
       end
 
       # POST api/v1/giftlists
