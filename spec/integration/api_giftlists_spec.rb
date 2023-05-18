@@ -23,10 +23,8 @@ describe 'Test Giftlist Handling' do
           username: @account_data['username'],
           password: @account_data['password']
         )
-        p auth
         header 'AUTHORIZATION', "Bearer #{auth[:attributes][:auth_token]}"
         get 'api/v1/giftlists'
-        p last_response
         _(last_response.status).must_equal 200
 
         result = JSON.parse last_response.body
