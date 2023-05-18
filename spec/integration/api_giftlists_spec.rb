@@ -14,8 +14,8 @@ describe 'Test Giftlist Handling' do
       before do
         @account_data = DATA[:accounts][0]
         account = GiftListApp::Account.create(@account_data)
-        account.add_owned_project(DATA[:giftlists][0])
-        account.add_owned_project(DATA[:giftlists][1])
+        account.add_owned_giftlist(DATA[:giftlists][0])
+        account.add_owned_giftlist(DATA[:giftlists][1])
       end
 
       it 'HAPPY: should get list for authorized account' do
@@ -23,9 +23,10 @@ describe 'Test Giftlist Handling' do
           username: @account_data['username'],
           password: @account_data['password']
         )
-
+        p auth
         header 'AUTHORIZATION', "Bearer #{auth[:attributes][:auth_token]}"
         get 'api/v1/giftlists'
+        p last_response
         _(last_response.status).must_equal 200
 
         result = JSON.parse last_response.body

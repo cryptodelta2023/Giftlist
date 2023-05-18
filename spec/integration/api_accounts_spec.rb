@@ -32,7 +32,6 @@ describe 'Test Account Handling' do
     end
 
     it 'HAPPY: should be able to create new accounts' do
-      p @account_data.to_json
       post 'api/v1/accounts', @account_data.to_json, @req_header
       _(last_response.status).must_equal 201
       _(last_response.headers['Location'].size).must_be :>, 0
