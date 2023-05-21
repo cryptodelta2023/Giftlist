@@ -7,6 +7,7 @@ module GiftListApp
   # Models a project
   class Giftlist < Sequel::Model
     many_to_one :owner, class: :'GiftListApp::Account'
+
     many_to_many :followers,
                  class: :'GiftListApp::Account',
                  join_table: :accounts_giftlists,
@@ -14,22 +15,36 @@ module GiftListApp
 
     one_to_many :giftinfos
 
-    plugin :association_dependencies, giftinfos: :destroy, followers: :nullify
+    plugin :association_dependencies, 
+           giftinfos: :destroy, 
+           followers: :nullify
 
     plugin :timestamps
     plugin :whitelist_security
     set_allowed_columns :list_name
 
-    def to_json(options = {})
-      JSON(
-        {
-          type: 'giftlist',
-          attributes: {
-            id:,
-            list_name:
-          }
-        }, options
+    def to_h
+      {
+        type: 'giftlist',
+        attributes: {
+          id:,
+          list_name:
+        }
+      }
+    end
+
+    def full_details
+      to_h.merge(
+        relationships: {
+          owner:,
+          followers:,
+          giftinfos:
+        }
       )
+    end
+    
+    def to_json(options = {})
+      JSON(to_h, options)
     end
   end
 end

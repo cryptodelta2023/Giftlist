@@ -42,8 +42,8 @@ def create_giftinfos
   loop do
     giftinfo_info = giftinfo_info_each.next
     giftlist = giftlists_cycle.next
-    GiftListApp::CreateGiftinfoForGiftlist.call(
-      giftlist_id: giftlist.id, giftinfo_data: giftinfo_info
+    GiftListApp::CreateGiftinfo.call(
+      account: giftlist.owner, giftlist:, giftinfo_data: giftinfo_info
     )
   end
 end
@@ -53,9 +53,9 @@ def add_followers
   follower_info.each do |follower|
     giftlist = GiftListApp::Giftlist.first(list_name: follower['giftlist_name'])
     follower['follower_email'].each do |email|
-      GiftListApp::AddFollowerToGiftlist.call(
-        email:, giftlist_id: giftlist.id
-      )
+      account = giftlist.owner
+      GiftListApp::AddFollower.call(
+        account:, giftlist:, follower_email: email)
     end
   end
 end

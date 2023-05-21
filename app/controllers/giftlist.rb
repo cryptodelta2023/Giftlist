@@ -1,89 +1,123 @@
 # frozen_string_literal: true
 
-require 'roda'
 require_relative './app'
 
+# rubocop:disable Metrics/BlockLength
 module GiftListApp
   # Web controller for GiftListApp API
   class Api < Roda
     # rubocop:disable Metrics/BlockLength
     route('giftlists') do |routing|
+      unauthorized_message = { message: 'Unauthorized Request' }.to_json
+      routing.halt(403, unauthorized_message) unless @auth_account
+
       @list_route = "#{@api_root}/giftlists"
-
       routing.on String do |list_id|
-        routing.on 'giftinfos' do
-          @info_route = "#{@api_root}/giftlists/#{list_id}/giftinfos"
-          # GET api/v1/giftlists/[list_id]/giftinfos/[info_id]
-          routing.get String do |info_id|
-            info = Giftinfo.where(giftlist_id: list_id, id: info_id).first # giftlist_id:FK from giftlist
-            info ? info.to_json : raise('Gift Information not found')
-          rescue StandardError => e
-            routing.halt 404, { message: e.message }.to_json
-          end
-
-          # GET api/v1/giftlists/[list_id]/giftinfos
-          routing.get do
-            output = { data: Giftlist.first(id: list_id).giftinfos } # giftinfos 對應到 002_giftinfos_create.rb
-            JSON.pretty_generate(output)
-          rescue StandardError
-            routing.halt 404, message: 'Could not find gift informations'
-          end
-
-          # POST api/v1/giftlists/[list_id]/giftinfos
-          routing.post do
-            new_data = JSON.parse(routing.body.read)
-
-            new_info = CreateGiftinfoForGiftlist.call(
-              giftlist_id: list_id, giftinfo_data: new_data
-            )
-
-            response.status = 201
-            response['Location'] = "#{@info_route}/#{new_info.id}"
-            { message: 'Giftinfo saved', data: new_info }.to_json
-          rescue Sequel::MassAssignmentRestriction
-            Api.logger.warn "MASS-ASSIGNMENT: #{new_data.keys}"
-            routing.halt 400, { message: 'Illegal Attributes' }.to_json
-          rescue StandardError => e
-            Api.logger.warn "MASS-ASSIGNMENT: #{e.message}"
-            routing.halt 500, { message: 'Error creating giftinfo' }.to_json
-          end
-        end
+        @req_giftlist = Giftlist.first(id: list_id)
 
         # GET api/v1/giftlists/[list_id]
         routing.get do
-          list = Giftlist.first(id: list_id)
-          list ? list.to_json : raise('Giftlist not found')
-        rescue StandardError => e
+          giftlist = GetGiftlistQuery.call(
+            account: @auth_account, project: @req_giftlist
+          )
+
+          { data: giftlist }.to_json
+        rescue GetProjectQuery::ForbiddenError => e
+          routing.halt 403, { message: e.message }.to_json
+        rescue GetProjectQuery::NotFoundError => e
           routing.halt 404, { message: e.message }.to_json
+        rescue StandardError => e
+          puts "FIND GIFTLIST ERROR: #{e.inspect}"
+          routing.halt 500, { message: 'API server error' }.to_json
+        end
+
+        routing.on('giftinfos') do
+          # POST api/v1/giftlists/[list_id]/giftinfos
+          routing.post do
+            new_giftinfo = CreateGiftifo.call(
+              account: @auth_account,
+              project: @req_giftlist,
+              giftinfo_data: JSON.parse(routing.body.read)
+            )
+
+            response.status = 201
+            response['Location'] = "#{@info_route}/#{new_giftinfo.id}"
+            { message: 'Giftinfo saved', data: new_giftinfo }.to_json
+          rescue CreateGiftinfo::ForbiddenError => e
+            routing.halt 403, { message: e.message }.to_json
+          rescue CreateGiftinfo::IllegalRequestError => e
+            routing.halt 400, { message: e.message }.to_json
+          rescue StandardError => e
+            Api.logger.warn "Could not create giftinfo: #{e.message}"
+            routing.halt 500, { message: 'API server error' }.to_json
+          end
+        end
+
+        routing.on('followers') do
+          # PUT api/v1/giftlists/[list_id]/followers
+          routing.put do
+            req_data = JSON.parse(routing.body.read)
+
+            follower = AddFollower.call(
+              account: @auth_account,
+              project: @req_giftlist,
+              collab_email: req_data['email']
+            )
+
+            { data: follower }.to_json
+          rescue AddFollower::ForbiddenError => e
+            routing.halt 403, { message: e.message }.to_json
+          rescue StandardError
+            routing.halt 500, { message: 'API server error' }.to_json
+          end
+
+          # DELETE api/v1/giftlists/[list_id]/followers
+          routing.delete do
+            req_data = JSON.parse(routing.body.read)
+            follower = RemoveFollower.call(
+              req_username: @auth_account.username,
+              collab_email: req_data['email'],
+              giftlist_id: list_id
+            )
+
+            { message: "#{follower.username} removed from giftlist",
+              data: follower }.to_json
+          rescue RemoveFollower::ForbiddenError => e
+            routing.halt 403, { message: e.message }.to_json
+          rescue StandardError
+            routing.halt 500, { message: 'API server error' }.to_json
+          end
         end
       end
 
-      # GET api/v1/giftlists/
-      routing.get do
-        account = Account.first(username: @auth_account['username'])
-        giftlists = account.giftlists
-        JSON.pretty_generate(data: giftlists)
-      rescue StandardError
-        routing.halt 403, { message: 'Could not find any giftlists' }.to_json
-      end
+      routing .is do
+        # GET api/v1/giftlists
+        routing.get do
+          giftlists = GiftlistPolicy::AccountScope.new(@auth_account).viewable
+          
+          JSON.pretty_generate(data: giftlists)
+        rescue StandardError
+          routing.halt 403, { message: 'Could not find any sgiftlists' }.to_json
+        end
 
-      # POST api/v1/giftlists
-      routing.post do
-        new_data = JSON.parse(routing.body.read)
-        new_list = Giftlist.new(new_data)
-        raise('Could not save giftlist') unless new_list.save
+        # POST api/v1/giftlists
+        routing.post do
+          new_data = JSON.parse(routing.body.read)
+          new_giftlist = @auth_account.add_owned_giftlist(new_data)
 
-        response.status = 201
-        response['Location'] = "#{@list_route}/#{new_list.id}"
-        { message: 'Giftlist saved', data: new_list }.to_json
-      rescue Sequel::MassAssignmentRestriction
-        Api.logger.warn "MASS-ASSIGNMENT: #{new_data.keys}"
-        routing.halt 400, { message: 'Illegal Attributes' }.to_json
-      rescue StandardError => e
-        Api.logger.error "UNKOWN ERROR: #{e.message}"
-        routing.halt 500, { message: 'Unknown server error' }.to_json
+          response.status = 201
+          response['Location'] = "#{@list_route}/#{new_giftlist.id}"
+          { message: 'Giftlist saved', data: new_giftlist }.to_json
+        rescue Sequel::MassAssignmentRestriction
+          Api.logger.warn "MASS-ASSIGNMENT: #{new_data.keys}"
+          routing.halt 400, { message: 'Illegal Request' }.to_json
+        rescue StandardError
+          Api.logger.error "Unknown error: #{e.message}"
+          routing.halt 500, { message: 'API server error' }.to_json
+        end
       end
     end
     # rubocop:enable Metrics/BlockLength
   end
 end
+# rubocop:enable Metrics/BlockLength
