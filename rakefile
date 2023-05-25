@@ -118,7 +118,7 @@ namespace :run do
   # Run in development mode
   desc 'Run API in development mode'
   task :dev do
-    sh 'puma -p 3000'
+    sh 'puma -p 4000'
   end
 end
 # rubocop:enable Style/HashSyntax, Style/SymbolArray
