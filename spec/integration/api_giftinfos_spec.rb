@@ -63,66 +63,66 @@ describe 'Test Giftinfo Handling' do
       _(result['attributes']).must_be_nil
     end
 
-
-  it 'SAD: should return error if unknown giftinfo does not exist' do
-    header 'AUTHORIZATION', auth_header(@account_data)
-      get "/api/v1/giftinfos/foobar" # why use '' instead of ""
+    it 'SAD: should return error if unknown giftinfo does not exist' do
+      header 'AUTHORIZATION', auth_header(@account_data)
+      get '/api/v1/giftinfos/foobar' # why use '' instead of ""
       _(last_response.status).must_equal 404
-  end
-
-  describe 'Creating Giftinfos' do
-    before do
-      @giftlist = GiftListApp::Giftlist.first
-      @info_data = DATA[:giftinfos][1]
     end
 
-    it 'HAPPY: should be able to create when everything correct' do
-      header 'AUTHORIZATION', auth_header(@account_data)
-      post "api/v1/giftlists/#{@giftlist.id}/giftinfos", @info_data.to_json
+    describe 'Creating Giftinfos' do
+      before do
+        @giftlist = GiftListApp::Giftlist.first
+        @info_data = DATA[:giftinfos][1]
+      end
 
-      _(last_response.status).must_equal 201
-      _(last_response.header['Location'].size).must_be :>, 0
+      it 'HAPPY: should be able to create when everything correct' do
+        header 'AUTHORIZATION', auth_header(@account_data)
+        post "api/v1/giftlists/#{@giftlist.id}/giftinfos", @info_data.to_json
 
-      created = JSON.parse(last_response.body)['data']['attributes']
-      info = GiftListApp::Giftinfo.first
+        _(last_response.status).must_equal 201
+        _(last_response.header['Location'].size).must_be :>, 0
 
-      _(created['id']).must_equal info.id
-      _(created['giftname']).must_equal @info_data['giftname']
-      _(created['url']).must_equal @info_data['url']
-      _(created['description']).must_equal @info_data['description']
-    end
+        created = JSON.parse(last_response.body)['data']['attributes']
+        info = GiftListApp::Giftinfo.first
 
-    it 'BAD AUTHORIZATION: should not create with incorrect authorization' do
-      header 'AUTHORIZATION', auth_header(@wrong_account_data)
-      post "api/v1/giftlists/#{@giftlist.id}/giftinfos", @info_data.to_json
+        _(created['id']).must_equal info.id
+        _(created['giftname']).must_equal @info_data['giftname']
+        _(created['url']).must_equal @info_data['url']
+        _(created['description']).must_equal @info_data['description']
+      end
 
-      data = JSON.parse(last_response.body)['data']
+      it 'BAD AUTHORIZATION: should not create with incorrect authorization' do
+        header 'AUTHORIZATION', auth_header(@wrong_account_data)
+        post "api/v1/giftlists/#{@giftlist.id}/giftinfos", @info_data.to_json
 
-      _(last_response.status).must_equal 403
-      _(last_response.headers['Location']).must_be_nil
-      _(data).must_be_nil
-    end
+        data = JSON.parse(last_response.body)['data']
 
-    it 'SAD AUTHORIZATION: should not create without any authorization' do
-      post "api/v1/giftlists/#{@giftlist.id}/giftinfos", @info_data.to_json
+        _(last_response.status).must_equal 403
+        _(last_response.headers['Location']).must_be_nil
+        _(data).must_be_nil
+      end
 
-      data = JSON.parse(last_response.body)['data']
+      it 'SAD AUTHORIZATION: should not create without any authorization' do
+        post "api/v1/giftlists/#{@giftlist.id}/giftinfos", @info_data.to_json
 
-      _(last_response.status).must_equal 403
-      _(last_response.headers['Location']).must_be_nil
-      _(data).must_be_nil
-    end
+        data = JSON.parse(last_response.body)['data']
 
-    it 'BAD VULNERABILITY: should not create with mass assignment' do
-      bad_data = @info_data.clone
-      bad_data['created_at'] = '1900-01-01'
-      header 'AUTHORIZATION', auth_header(@account_data)
-      post "api/v1/giftlists/#{@giftlist.id}/giftinfos", bad_data.to_json
+        _(last_response.status).must_equal 403
+        _(last_response.headers['Location']).must_be_nil
+        _(data).must_be_nil
+      end
 
-      data = JSON.parse(last_response.body)['data']
-      _(last_response.status).must_equal 400
-      _(last_response.headers['Location']).must_be_nil
-      _(data).must_be_nil
+      it 'BAD VULNERABILITY: should not create with mass assignment' do
+        bad_data = @info_data.clone
+        bad_data['created_at'] = '1900-01-01'
+        header 'AUTHORIZATION', auth_header(@account_data)
+        post "api/v1/giftlists/#{@giftlist.id}/giftinfos", bad_data.to_json
+
+        data = JSON.parse(last_response.body)['data']
+        _(last_response.status).must_equal 400
+        _(last_response.headers['Location']).must_be_nil
+        _(data).must_be_nil
+      end
     end
   end
 end
