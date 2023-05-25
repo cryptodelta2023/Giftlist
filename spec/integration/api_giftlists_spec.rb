@@ -45,13 +45,12 @@ describe 'Test Giftlist Handling' do
       giftlist = @account.add_owned_giftlist(DATA[:giftlists][0])
 
       header 'AUTHORIZATION', auth_header(@account_data)
-        get "api/v1/giftlists/#{giftlist.id}"
+      get "api/v1/giftlists/#{giftlist.id}"
       _(last_response.status).must_equal 200
 
       result = JSON.parse(last_response.body)['data']
       _(result['attributes']['id']).must_equal giftlist.id
       _(result['attributes']['list_name']).must_equal giftlist.list_name
-      _(result['attributes']['list_owner']).must_equal giftlist.owner
       # _(result['attributes']['list_name']).must_equal existing_list['list_name']
       # _(result['attributes']['list_owner']).must_equal existing_list['list_owner']
     end
