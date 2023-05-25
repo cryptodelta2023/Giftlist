@@ -60,8 +60,8 @@ module GiftListApp
 
             follower = AddFollower.call(
               account: @auth_account,
-              project: @req_giftlist,
-              collab_email: req_data['email']
+              giftlist: @req_giftlist,
+              follower_email: req_data['email']
             )
 
             { data: follower }.to_json
@@ -76,7 +76,7 @@ module GiftListApp
             req_data = JSON.parse(routing.body.read)
             follower = RemoveFollower.call(
               req_username: @auth_account.username,
-              collab_email: req_data['email'],
+              follower_email: req_data['email'],
               giftlist_id: list_id
             )
 
