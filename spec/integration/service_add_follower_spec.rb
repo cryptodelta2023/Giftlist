@@ -20,7 +20,7 @@ describe 'Test AddFollowers service' do
   end
 
   it 'HAPPY: should be able to add a follower to a giftlist' do
-    GiftListApp::AddFollowers.call(
+    GiftListApp::AddFollower.call(
       account: @owner,
       giftlist: @giftlist,
       follower_email: @follower.email
@@ -32,11 +32,11 @@ describe 'Test AddFollowers service' do
 
   it 'BAD: should not add owner as a follower' do
     _(proc {
-      GiftListApp::AddFollowers.call(
+      GiftListApp::AddFollower.call(
         account: @owner,
         giftlist: @giftlist,
         follower_email: @owner.email
       )
-    }).must_raise GiftListApp::AddFollowers::ForbiddenErrors
+    }).must_raise GiftListApp::AddFollower::ForbiddenError
   end
 end

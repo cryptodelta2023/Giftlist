@@ -28,8 +28,6 @@ describe 'Test Follower Handling' do
       header 'AUTHORIZATION', auth_header(@account_data)
       put "api/v1/giftlists/#{@giftlist.id}/followers", req_data.to_json
 
-      p "-----"
-      p JSON.parse(last_response.body)
       added = JSON.parse(last_response.body)['data']['attributes']
 
       _(last_response.status).must_equal 200

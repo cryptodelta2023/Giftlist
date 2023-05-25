@@ -51,7 +51,7 @@ describe 'Test Giftlist Handling' do
       result = JSON.parse(last_response.body)['data']
       _(result['attributes']['id']).must_equal giftlist.id
       _(result['attributes']['list_name']).must_equal giftlist.list_name
-      _(result['attributes']['list_owner']).must_equal giftlist.list_owner
+      _(result['attributes']['list_owner']).must_equal giftlist.owner
       # _(result['attributes']['list_name']).must_equal existing_list['list_name']
       # _(result['attributes']['list_owner']).must_equal existing_list['list_owner']
     end
@@ -63,7 +63,7 @@ describe 'Test Giftlist Handling' do
       _(last_response.status).must_equal 404
     end
 
-    it 'BAD AUTHORIZATION: should not get project with wrong authorization' do
+    it 'BAD AUTHORIZATION: should not get giftlist with wrong authorization' do
       giftlist = @account.add_owned_giftlist(DATA[:giftlists][0])
 
       header 'AUTHORIZATION', auth_header(@wrong_account_data)
@@ -87,7 +87,7 @@ describe 'Test Giftlist Handling' do
     end
   end
 
-  describe 'Creating New Projects' do
+  describe 'Creating New Giftlists' do
     before do
       @giftlist_data = DATA[:giftlists][0]
     end
