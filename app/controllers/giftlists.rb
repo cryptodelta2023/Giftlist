@@ -34,7 +34,7 @@ module GiftListApp
         routing.on('giftinfos') do
           # POST api/v1/giftlists/[list_id]/giftinfos
           routing.post do
-            new_giftinfo = CreateGiftifo.call(
+            new_giftinfo = CreateGiftinfo.call(
               account: @auth_account,
               giftlist: @req_giftlist,
               giftinfo_data: JSON.parse(routing.body.read)

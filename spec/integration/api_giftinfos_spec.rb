@@ -28,7 +28,7 @@ describe 'Test Giftinfo Handling' do
       header 'AUTHORIZATION', auth_header(@account_data)
       get "/api/v1/giftinfos/#{info.id}"
       _(last_response.status).must_equal 200
-
+      
       result = JSON.parse(last_response.body)['data']
       _(result['attributes']['id']).must_equal info.id
       _(result['attributes']['giftname']).must_equal info_data['giftname']
@@ -44,7 +44,6 @@ describe 'Test Giftinfo Handling' do
       get "/api/v1/giftinfos/#{info.id}"
 
       result = JSON.parse last_response.body
-
       _(last_response.status).must_equal 403
       _(result['attributes']).must_be_nil
     end
@@ -65,7 +64,7 @@ describe 'Test Giftinfo Handling' do
 
     it 'SAD: should return error if unknown giftinfo does not exist' do
       header 'AUTHORIZATION', auth_header(@account_data)
-      get '/api/v1/giftinfos/foobar' # why use '' instead of ""
+      get '/api/v1/giftinfos/foobar'
       _(last_response.status).must_equal 404
     end
 
@@ -84,7 +83,6 @@ describe 'Test Giftinfo Handling' do
 
         created = JSON.parse(last_response.body)['data']['attributes']
         info = GiftListApp::Giftinfo.first
-
         _(created['id']).must_equal info.id
         _(created['giftname']).must_equal @info_data['giftname']
         _(created['url']).must_equal @info_data['url']
@@ -96,7 +94,6 @@ describe 'Test Giftinfo Handling' do
         post "api/v1/giftlists/#{@giftlist.id}/giftinfos", @info_data.to_json
 
         data = JSON.parse(last_response.body)['data']
-
         _(last_response.status).must_equal 403
         _(last_response.headers['Location']).must_be_nil
         _(data).must_be_nil

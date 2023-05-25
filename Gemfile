@@ -20,9 +20,9 @@ gem 'rbnacl', '~>7.1'
 gem 'hirb', '~>0.7'
 gem 'sequel', '~>5.67'
 
-#group :production do
-#  gem 'pg'
-#end
+group :production do
+  gem 'pg'
+end
 
 # External Services
 gem 'http'
