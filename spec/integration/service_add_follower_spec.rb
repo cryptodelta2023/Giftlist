@@ -2,7 +2,7 @@
 
 require_relative '../spec_helper'
 
-describe 'Test AddFollowerToGiftlist service' do
+describe 'Test AddFollowers service' do
   before do
     wipe_database
 
@@ -20,9 +20,10 @@ describe 'Test AddFollowerToGiftlist service' do
   end
 
   it 'HAPPY: should be able to add a follower to a giftlist' do
-    GiftListApp::AddFollowerToGiftlist.call(
-      email: @follower.email,
-      giftlist_id: @giftlist.id
+    GiftListApp::AddFollowers.call(
+      account: @owner,
+      giftlist: @giftlist,
+      follower_email: @follower.email
     )
 
     _(@follower.giftlists.count).must_equal 1
@@ -31,10 +32,11 @@ describe 'Test AddFollowerToGiftlist service' do
 
   it 'BAD: should not add owner as a follower' do
     _(proc {
-      GiftListApp::AddFollowerToGiftlist.call(
-        email: @owner.email,
-        giftlist_id: @giftlist.id
+      GiftListApp::AddFollowers.call(
+        account: @owner,
+        giftlist: @giftlist,
+        follower_email: @owner.email
       )
-    }).must_raise GiftListApp::AddFollowerToGiftlist::OwnerNotFollowerError
+    }).must_raise GiftListApp::AddFollowers::ForbiddenErrors
   end
 end

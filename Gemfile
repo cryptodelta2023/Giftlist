@@ -10,19 +10,19 @@ gem 'roda', '~>3.54'
 
 # Configuration
 gem 'figaro', '~>1.2'
-gem 'rake'
+gem 'rake', '~>13.0'
 
 # Security
 gem 'bundler-audit'
 gem 'rbnacl', '~>7.1'
 
 # Database
-gem 'hirb'
-gem 'sequel', '~>5.55'
+gem 'hirb', '~>0.7'
+gem 'sequel', '~>5.67'
 
-group :production do
-  gem 'pg'
-end
+#group :production do
+#  gem 'pg'
+#end
 
 # External Services
 gem 'http'
@@ -40,6 +40,7 @@ gem 'rack-test'
 # Development
 group :development do
   gem 'rerun'
+
   # Quality
   gem 'rubocop'
   gem 'rubocop-performance'
