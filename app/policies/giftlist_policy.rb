@@ -51,11 +51,11 @@ module GiftListApp
         can_edit: can_edit?,
         can_delete: can_delete?,
         can_leave: can_leave?,
-        can_add_documents: can_add_documents?,
-        can_delete_documents: can_remove_documents?,
+        can_add_giftinfos: can_add_giftinfos?,
+        can_delete_giftinfos: can_remove_giftinfos?,
         can_add_followers: can_add_followers?,
         can_remove_followers: can_remove_followers?,
-        can_collaborate: can_collaborate?
+        can_follow: can_follow?
       }
     end
 

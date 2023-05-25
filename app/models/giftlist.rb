@@ -4,7 +4,7 @@ require 'json'
 require 'sequel'
 
 module GiftListApp
-  # Models a project
+  # Models a giftlist
   class Giftlist < Sequel::Model
     many_to_one :owner, class: :'GiftListApp::Account'
 

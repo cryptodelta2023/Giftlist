@@ -12,11 +12,11 @@ module GiftListApp
     end
 
     def can_invite?
-      @requestor.can_add_collaborators? && @target.can_collaborate?
+      @requestor.can_add_followers? && @target.can_follow?
     end
 
     def can_remove?
-      @requestor.can_remove_collaborators? && target_is_collaborator?
+      @requestor.can_remove_followers? && target_is_follower?
     end
 
     private

@@ -18,13 +18,13 @@ module GiftListApp
         # GET api/v1/giftlists/[list_id]
         routing.get do
           giftlist = GetGiftlistQuery.call(
-            account: @auth_account, project: @req_giftlist
+            account: @auth_account, giftlist: @req_giftlist
           )
 
           { data: giftlist }.to_json
-        rescue GetProjectQuery::ForbiddenError => e
+        rescue GetGiftlistQuery::ForbiddenError => e
           routing.halt 403, { message: e.message }.to_json
-        rescue GetProjectQuery::NotFoundError => e
+        rescue GetGiftlistQuery::NotFoundError => e
           routing.halt 404, { message: e.message }.to_json
         rescue StandardError => e
           puts "FIND GIFTLIST ERROR: #{e.inspect}"
@@ -36,7 +36,7 @@ module GiftListApp
           routing.post do
             new_giftinfo = CreateGiftifo.call(
               account: @auth_account,
-              project: @req_giftlist,
+              giftlist: @req_giftlist,
               giftinfo_data: JSON.parse(routing.body.read)
             )
 
