@@ -30,7 +30,7 @@ module GiftListApp
     end
 
     def can_remove_giftinfos?
-      account_is_owner? || account_is_follower?
+      account_is_owner?
     end
 
     def can_add_followers?
