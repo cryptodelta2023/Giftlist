@@ -2,11 +2,9 @@
 
 require_relative './app'
 
-# rubocop:disable Metrics/BlockLength
 module GiftListApp
   # Web controller for GiftListApp API
   class Api < Roda
-    # rubocop:disable Metrics/BlockLength
     route('giftlists') do |routing|
       unauthorized_message = { message: 'Unauthorized Request' }.to_json
       routing.halt(403, unauthorized_message) unless @auth_account
@@ -39,7 +37,7 @@ module GiftListApp
               giftlist: @req_giftlist,
               giftinfo_data: JSON.parse(routing.body.read)
             )
-
+            p new_giftinfo
             response.status = 201
             response['Location'] = "#{@info_route}/#{new_giftinfo.id}"
             { message: 'Giftinfo saved', data: new_giftinfo }.to_json
@@ -49,6 +47,22 @@ module GiftListApp
             routing.halt 400, { message: e.message }.to_json
           rescue StandardError => e
             Api.logger.warn "Could not create giftinfo: #{e.message}"
+            routing.halt 500, { message: 'API server error' }.to_json
+          end
+          # DELETE api/v1/giftlists/[list_id]/giftinfos
+          routing.delete do
+            req_data = JSON.parse(routing.body.read)
+            giftinfo = RemoveGiftinfo.call(
+              req_username: @auth_account.username,
+              giftinfo_id: req_data['giftinfo_id'],
+              giftlist_id: list_id
+            )
+
+            { message: 'giftinfo removed from giftlist',
+              data: giftinfo }.to_json
+          rescue RemoveGiftinfo::ForbiddenError => e
+            routing.halt 403, { message: e.message }.to_json
+          rescue StandardError
             routing.halt 500, { message: 'API server error' }.to_json
           end
         end
@@ -90,11 +104,11 @@ module GiftListApp
         end
       end
 
-      routing .is do
+      routing.is do
         # GET api/v1/giftlists
         routing.get do
           giftlists = GiftlistPolicy::AccountScope.new(@auth_account).viewable
-          
+
           JSON.pretty_generate(data: giftlists)
         rescue StandardError
           routing.halt 403, { message: 'Could not find any sgiftlists' }.to_json
@@ -117,7 +131,5 @@ module GiftListApp
         end
       end
     end
-    # rubocop:enable Metrics/BlockLength
   end
 end
-# rubocop:enable Metrics/BlockLength
