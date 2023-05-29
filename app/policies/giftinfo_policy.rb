@@ -2,21 +2,22 @@
 
 # Policy to determine if account can view a giftlist
 class GiftinfoPolicy
-  def initialize(account, giftinfo)
+  def initialize(account, giftinfo, auth_scope = nil)
     @account = account
     @giftinfo = giftinfo
+    @auth_scope = auth_scope
   end
 
   def can_view?
-    account_owns_giftlist? || account_followers_on_giftlist?
+    can_read? && account_owns_giftlist?
   end
 
   def can_edit?
-    account_owns_giftlist? || account_followers_on_giftlist?
+    can_write? && account_owns_giftlist?
   end
 
   def can_delete?
-    account_owns_giftlist? || account_followers_on_giftlist?
+    can_write? && account_owns_giftlist?
   end
 
   def summary
@@ -29,11 +30,15 @@ class GiftinfoPolicy
 
   private
 
-  def account_owns_giftlist?
-    @giftinfo.giftlist.owner == @account
+  def can_read?
+    @auth_scope ? @auth_scope.can_read?('giftinfos') : false
   end
 
-  def account_followers_on_giftlist?
-    @giftinfo.giftlist.followers.include?(@account)
+  def can_write?
+    @auth_scope ? @auth_scope.can_write?('giftinfos') : false
+  end
+
+  def account_owns_giftlist?
+    @giftinfo.giftlist.owner == @account
   end
 end

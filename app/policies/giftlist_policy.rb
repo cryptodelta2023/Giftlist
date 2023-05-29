@@ -3,22 +3,23 @@
 module GiftListApp
   # Policy to determine if an account can view a particular giftlist
   class GiftlistPolicy
-    def initialize(account, giftlist)
+    def initialize(account, giftlist, auth_scope = nil)
       @account = account
       @giftlist = giftlist
+      @auth_scope = auth_scope
     end
 
     def can_view?
-      account_is_owner? || account_is_follower?
+      can_read? && (account_is_owner? || account_is_follower?)
     end
 
     # duplication is ok!
     def can_edit?
-      account_is_owner? || account_is_follower?
+      can_write? && (account_is_owner? || account_is_follower?)
     end
 
     def can_delete?
-      account_is_owner?
+      can_write? && account_is_owner?
     end
 
     def can_leave?
@@ -26,15 +27,15 @@ module GiftListApp
     end
 
     def can_add_giftinfos?
-      account_is_owner? || account_is_follower?
+      can_write? && (account_is_owner? || account_is_follower?)
     end
 
     def can_remove_giftinfos?
-      account_is_owner?
+      can_write? && account_is_owner?
     end
 
     def can_add_followers?
-      account_is_owner?
+      can_write? && account_is_owner?
     end
 
     def can_remove_followers?
@@ -42,10 +43,10 @@ module GiftListApp
     end
 
     def can_follow?
-      !(account_is_owner? or account_is_follower?)
+      !(account_is_owner? || account_is_follower?)
     end
 
-    def summary
+    def summary # rubocop:disable Metrics/MethodLength
       {
         can_view: can_view?,
         can_edit: can_edit?,
@@ -60,6 +61,14 @@ module GiftListApp
     end
 
     private
+
+    def can_read?
+      @auth_scope ? @auth_scope.can_read?('giftlists') : false
+    end
+
+    def can_write?
+      @auth_scope ? @auth_scope.can_write?('giftlists') : false
+    end
 
     def account_is_owner?
       @giftlist.owner == @account

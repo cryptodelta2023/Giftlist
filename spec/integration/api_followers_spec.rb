@@ -34,7 +34,7 @@ describe 'Test Follower Handling' do
       _(added['username']).must_equal @another_account.username
     end
 
-    it 'SAD AUTHORIZATION: should not add a follower without authorization' do
+    it 'SAD AUTHORIZATION: should not add follower without authorization' do
       req_data = { email: @another_account.email }
 
       put "api/v1/giftlists/#{@giftlist.id}/followers", req_data.to_json

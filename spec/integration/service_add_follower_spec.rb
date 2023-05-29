@@ -12,16 +12,17 @@ describe 'Test AddFollowers service' do
 
     giftlist_data = DATA[:giftlists].first
 
+    @owner_data = DATA[:accounts][0]
     @owner = GiftListApp::Account.all[0]
     @follower = GiftListApp::Account.all[1]
-    @giftlist = GiftListApp::CreateGiftlistForOwner.call(
-      owner_id: @owner.id, giftlist_data:
-    )
+    @giftlist = @owner.add_owned_giftlist(giftlist_data)
   end
 
   it 'HAPPY: should be able to add a follower to a giftlist' do
+    auth = authorization(@owner_data)
+    
     GiftListApp::AddFollower.call(
-      account: @owner,
+      auth:,
       giftlist: @giftlist,
       follower_email: @follower.email
     )
@@ -31,9 +32,13 @@ describe 'Test AddFollowers service' do
   end
 
   it 'BAD: should not add owner as a follower' do
+    auth = GiftListApp::AuthenticateAccount.call(
+      username: @owner_data['username'],
+      password: @owner_data['password']
+    )
     _(proc {
       GiftListApp::AddFollower.call(
-        account: @owner,
+        auth:,
         giftlist: @giftlist,
         follower_email: @owner.email
       )

@@ -10,12 +10,13 @@ module GiftListApp
       end
     end
 
-    def self.call(req_username:, follower_email:, giftlist_id:)
-      account = Account.first(username: req_username)
+    def self.call(auth:, follower_email:, giftlist_id:)
       giftlist = Giftlist.first(id: giftlist_id)
       follower = Account.first(email: follower_email)
 
-      policy = FollowRequestPolicy.new(giftlist, account, follower)
+      policy = FollowRequestPolicy.new(
+        giftlist, auth[:account], follower, auth[:scope]
+      )
       raise ForbiddenError unless policy.can_remove?
 
       giftlist.remove_follower(follower)

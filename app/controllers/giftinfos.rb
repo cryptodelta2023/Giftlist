@@ -18,7 +18,7 @@ module GiftListApp
 
         routing.get do
           giftinfo = GetGiftinfoQuery.call(
-            requestor: @auth_account, giftinfo: @req_giftinfo
+            auth: @auth, giftinfo: @req_giftinfo
           )
 
           { data: giftinfo }.to_json
@@ -27,7 +27,7 @@ module GiftListApp
         rescue GetGiftinfoQuery::NotFoundError => e
           routing.halt 404, { message: e.message }.to_json
         rescue StandardError => e
-          puts "GET GIFTINFO ERROR: #{e.inspect}"
+          Api.logger.warn "Giftinfo Error: #{e.inspect}"
           routing.halt 500, { message: 'API server error' }.to_json
         end
       end

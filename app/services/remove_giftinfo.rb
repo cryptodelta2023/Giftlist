@@ -10,13 +10,14 @@ module GiftListApp
       end
     end
 
-    def self.call(req_username:, giftinfo_id:, giftlist_id:)
-      account = Account.first(username: req_username)
+    def self.call(auth:, giftinfo_id:, giftlist_id:)
       giftlist = Giftlist.first(id: giftlist_id)
       giftinfo = Giftinfo.first(id: giftinfo_id)
 
-    #   policy = FollowRequestPolicy.new(giftlist, account, giftinfo)
-    #   raise ForbiddenError unless policy.can_remove?
+      policy = GiftinfoRemovePolicy.new(
+        giftlist, auth[:account], giftinfo, auth[:scope]
+      )
+      raise ForbiddenError unless policy.can_delete?
 
       giftlist.remove_giftinfo(giftinfo)
       giftinfo

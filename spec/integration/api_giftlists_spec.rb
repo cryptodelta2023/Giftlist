@@ -7,6 +7,7 @@ describe 'Test Giftlist Handling' do
 
   before do
     wipe_database
+
     @account_data = DATA[:accounts][0]
     @wrong_account_data = DATA[:accounts][1]
 

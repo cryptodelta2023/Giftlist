@@ -17,10 +17,10 @@ module GiftListApp
       end
     end
 
-    def self.call(account:, giftlist:)
+    def self.call(auth:, giftlist:)
       raise NotFoundError unless giftlist
 
-      policy = GiftlistPolicy.new(account, giftlist)
+      policy = GiftlistPolicy.new(auth[:account], giftlist, auth[:scope])
       raise ForbiddenError unless policy.can_view?
 
       giftlist.full_details.merge(policies: policy.summary)

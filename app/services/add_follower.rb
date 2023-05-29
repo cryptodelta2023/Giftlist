@@ -10,9 +10,11 @@ module GiftListApp
       end
     end
 
-    def self.call(account:, giftlist:, follower_email:)
+    def self.call(auth:, giftlist:, follower_email:)
       invitee = Account.first(email: follower_email)
-      policy = FollowRequestPolicy.new(giftlist, account, invitee)
+      policy = FollowRequestPolicy.new(
+        giftlist, auth[:account], invitee, auth[:scope]
+      )
       raise ForbiddenError unless policy.can_invite?
 
       giftlist.add_follower(invitee)

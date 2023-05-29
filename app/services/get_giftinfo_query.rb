@@ -18,10 +18,10 @@ module GiftListApp
     end
 
     # Giftinfo for given requestor account
-    def self.call(requestor:, giftinfo:)
+    def self.call(auth:, giftinfo:)
       raise NotFoundError unless giftinfo
 
-      policy = GiftinfoPolicy.new(requestor, giftinfo)
+      policy = GiftinfoPolicy.new(auth[:account], giftinfo, auth[:scope])
       raise ForbiddenError unless policy.can_view?
 
       giftinfo

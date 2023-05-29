@@ -6,8 +6,7 @@ module GiftListApp
   # Web controller for GiftListApp API
   class Api < Roda
     route('giftlists') do |routing|
-      unauthorized_message = { message: 'Unauthorized Request' }.to_json
-      routing.halt(403, unauthorized_message) unless @auth_account
+      routing.halt(403, UNAUTH_MSG) unless @auth_account
 
       @list_route = "#{@api_root}/giftlists"
       routing.on String do |list_id|
@@ -15,9 +14,7 @@ module GiftListApp
 
         # GET api/v1/giftlists/[list_id]
         routing.get do
-          giftlist = GetGiftlistQuery.call(
-            account: @auth_account, giftlist: @req_giftlist
-          )
+          giftlist = GetGiftlistQuery.call(auth: @auth, giftlist: @req_giftlist)
 
           { data: giftlist }.to_json
         rescue GetGiftlistQuery::ForbiddenError => e
@@ -33,11 +30,10 @@ module GiftListApp
           # POST api/v1/giftlists/[list_id]/giftinfos
           routing.post do
             new_giftinfo = CreateGiftinfo.call(
-              account: @auth_account,
+              auth: @auth,
               giftlist: @req_giftlist,
               giftinfo_data: JSON.parse(routing.body.read)
             )
-            p new_giftinfo
             response.status = 201
             response['Location'] = "#{@info_route}/#{new_giftinfo.id}"
             { message: 'Giftinfo saved', data: new_giftinfo }.to_json
@@ -53,7 +49,7 @@ module GiftListApp
           routing.delete do
             req_data = JSON.parse(routing.body.read)
             giftinfo = RemoveGiftinfo.call(
-              req_username: @auth_account.username,
+              auth: @auth,
               giftinfo_id: req_data['giftinfo_id'],
               giftlist_id: list_id
             )
@@ -73,7 +69,7 @@ module GiftListApp
             req_data = JSON.parse(routing.body.read)
 
             follower = AddFollower.call(
-              account: @auth_account,
+              auth: @auth,
               giftlist: @req_giftlist,
               follower_email: req_data['email']
             )
@@ -89,7 +85,7 @@ module GiftListApp
           routing.delete do
             req_data = JSON.parse(routing.body.read)
             follower = RemoveFollower.call(
-              req_username: @auth_account.username,
+              auth: @auth,
               follower_email: req_data['email'],
               giftlist_id: list_id
             )
@@ -108,16 +104,17 @@ module GiftListApp
         # GET api/v1/giftlists
         routing.get do
           giftlists = GiftlistPolicy::AccountScope.new(@auth_account).viewable
-
           JSON.pretty_generate(data: giftlists)
         rescue StandardError
-          routing.halt 403, { message: 'Could not find any sgiftlists' }.to_json
+          routing.halt 403, { message: 'Could not find any giftlists' }.to_json
         end
 
         # POST api/v1/giftlists
         routing.post do
           new_data = JSON.parse(routing.body.read)
-          new_giftlist = @auth_account.add_owned_giftlist(new_data)
+          new_giftlist = CreateGiftlistForOwner.call(
+            auth: @auth, giftlist_data: new_data
+          )
 
           response.status = 201
           response['Location'] = "#{@list_route}/#{new_giftlist.id}"
@@ -125,6 +122,8 @@ module GiftListApp
         rescue Sequel::MassAssignmentRestriction
           Api.logger.warn "MASS-ASSIGNMENT: #{new_data.keys}"
           routing.halt 400, { message: 'Illegal Request' }.to_json
+        rescue CreateGiftlistForOwner::ForbiddenError => e
+          routing.halt 403, { message: e.message }.to_json
         rescue StandardError
           Api.logger.error "Unknown error: #{e.message}"
           routing.halt 500, { message: 'API server error' }.to_json
