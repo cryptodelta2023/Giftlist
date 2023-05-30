@@ -40,3 +40,10 @@ DATA = {
   giftinfos: YAML.load(File.read('app/db/seeds/giftinfos_seed.yml')),
   giftlists: YAML.load(File.read('app/db/seeds/giftlists_seed.yml'))
 }.freeze
+
+## SSO fixtures
+GH_ACCOUNT_RESPONSE = YAML.load(
+  File.read('spec/fixtures/github_token_response.yml')
+)
+GOOD_GH_ACCESS_TOKEN = GH_ACCOUNT_RESPONSE.keys.first
+SSO_ACCOUNT = YAML.load(File.read('spec/fixtures/sso_account.yml'))

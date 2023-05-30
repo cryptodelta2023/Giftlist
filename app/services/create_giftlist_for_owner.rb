@@ -3,10 +3,10 @@
 module GiftListApp
   # Service object to create a new giftlist for an owner
   class CreateGiftlistForOwner
-    # Error for owner cannot be collaborator
+    # Error for owner cannot be follower
     class ForbiddenError < StandardError
       def message
-        'You are not allowed to add more giftinfos'
+        'You are not allowed to create giftlists'
       end
     end
 
