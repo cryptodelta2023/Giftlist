@@ -15,13 +15,14 @@ module GiftListApp
     def get_github_account(access_token)
       gh_response = HTTP.headers(
         user_agent: 'GiftListApp',
-        authorization: "token #{access_token}",
-        # authorization: "Bearer #{access_token}",
+        # authorization: "token #{access_token}",
+        authorization: "Bearer #{access_token}",
         accept: 'application/json'
       ).get(ENV.fetch('GITHUB_ACCOUNT_URL'))
 
       raise unless gh_response.status == 200
 
+      #   puts JSON.parse(gh_response)
       account = GithubAccount.new(JSON.parse(gh_response))
       { username: account.username, email: account.email }
     end

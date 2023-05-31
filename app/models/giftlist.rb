@@ -15,8 +15,8 @@ module GiftListApp
 
     one_to_many :giftinfos
 
-    plugin :association_dependencies, 
-           giftinfos: :destroy, 
+    plugin :association_dependencies,
+           giftinfos: :destroy,
            followers: :nullify
 
     plugin :timestamps
@@ -42,7 +42,7 @@ module GiftListApp
         }
       )
     end
-    
+
     def to_json(options = {})
       JSON(to_h, options)
     end

@@ -55,7 +55,8 @@ def add_followers
     follower['follower_email'].each do |email|
       account = giftlist.owner
       GiftListApp::AddFollower.call(
-        account:, giftlist:, follower_email: email)
+        account:, giftlist:, follower_email: email
+      )
     end
   end
 end

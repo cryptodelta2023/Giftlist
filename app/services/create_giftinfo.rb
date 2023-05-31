@@ -20,7 +20,7 @@ module GiftListApp
     def self.call(auth:, giftlist:, giftinfo_data:)
       policy = GiftlistPolicy.new(auth[:account], giftlist, auth[:scope])
       raise ForbiddenError unless policy.can_add_giftinfos?
-      
+
       giftlist.add_giftinfo(giftinfo_data)
     rescue Sequel::MassAssignmentRestriction
       raise IllegalRequestError

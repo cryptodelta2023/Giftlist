@@ -28,7 +28,7 @@ describe 'Test Giftinfo Handling' do
       header 'AUTHORIZATION', auth_header(@account_data)
       get "/api/v1/giftinfos/#{info.id}"
       _(last_response.status).must_equal 200
-      
+
       result = JSON.parse(last_response.body)['data']
       _(result['attributes']['id']).must_equal info.id
       _(result['attributes']['giftname']).must_equal info_data['giftname']

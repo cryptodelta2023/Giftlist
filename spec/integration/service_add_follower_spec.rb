@@ -20,7 +20,7 @@ describe 'Test AddFollowers service' do
 
   it 'HAPPY: should be able to add a follower to a giftlist' do
     auth = authorization(@owner_data)
-    
+
     GiftListApp::AddFollower.call(
       auth:,
       giftlist: @giftlist,

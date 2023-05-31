@@ -2,7 +2,7 @@
 
 require 'roda'
 require 'json'
-require_relative './helpers.rb'
+require_relative './helpers'
 
 module GiftListApp
   # Web controller for Credence API
