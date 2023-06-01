@@ -61,6 +61,7 @@ describe 'Test Authentication Routes' do
 
       post 'api/v1/auth/sso', gh_access_token.to_json, @req_header
 
+      # puts JSON.parse(last_response.body)
       auth_account = JSON.parse(last_response.body)['data']
       account = auth_account['attributes']['account']['attributes']
 
