@@ -9,7 +9,7 @@ class GiftinfoPolicy
   end
 
   def can_view?
-    can_read? && account_owns_giftlist?
+    can_read? && (account_owns_giftlist? || account_is_giftlist_follower?)
   end
 
   def can_edit?
@@ -40,5 +40,9 @@ class GiftinfoPolicy
 
   def account_owns_giftlist?
     @giftinfo.giftlist.owner == @account
+  end
+
+  def account_is_giftlist_follower?
+    @giftinfo.giftlist.followers.include?(@account)
   end
 end
