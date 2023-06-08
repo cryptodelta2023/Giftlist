@@ -36,8 +36,6 @@ module GiftListApp
         account.owned_giftlists + account.followings
       end
 
-
-
       def includes_follower?(giftlist, account)
         giftlist.followers.include? account
       end
