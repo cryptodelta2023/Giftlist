@@ -22,7 +22,7 @@ module GiftListApp
 
       raise unless gh_response.status == 200
 
-      puts JSON.parse(gh_response)
+      # puts JSON.parse(gh_response)
       account = GithubAccount.new(JSON.parse(gh_response))
       { username: account.username, email: account.email }
     end

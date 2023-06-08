@@ -22,11 +22,21 @@ module GiftListApp
         end
       end
 
+      def own_giftlists(account)
+        account.owned_giftlists
+      end
+
+      def following_giftlists(account)
+        account.followings
+      end
+
       private
 
       def all_giftlists(account)
         account.owned_giftlists + account.followings
       end
+
+
 
       def includes_follower?(giftlist, account)
         giftlist.followers.include? account
