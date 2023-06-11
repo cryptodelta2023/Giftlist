@@ -11,23 +11,23 @@ module GiftListApp
       @list_route = "#{@api_root}/giftlists"
       routing.on String do |list_id|
         @req_giftlist = Giftlist.first(id: list_id)
-
-        # GET api/v1/giftlists/[list_id]
-        routing.get do
-          if list_id == "myown"
-            giftlists = GiftlistPolicy::AccountScope.new(@auth_account).own_giftlists(@auth_account)
-            JSON.pretty_generate(data: giftlists)
-          # rescue StandardError
-          #   routing.halt 403, { message: 'Could not find any giftlists' }.to_json
-          elsif list_id == "following"
-            giftlists = GiftlistPolicy::AccountScope.new(@auth_account).following_giftlists(@auth_account)
-            JSON.pretty_generate(data: giftlists)
-          # rescue StandardError
-          #   routing.halt 403, { message: 'Could not find any giftlists' }.to_json
-          else
-            giftlist = GetGiftlistQuery.call(auth: @auth, giftlist: @req_giftlist)
-            { data: giftlist }.to_json
-          end
+        routing.is do
+          # GET api/v1/giftlists/[list_id]
+          routing.get do
+            if list_id == 'myown'
+              giftlists = GiftlistPolicy::AccountScope.new(@auth_account).own_giftlists(@auth_account)
+              JSON.pretty_generate(data: giftlists)
+            # rescue StandardError
+            #   routing.halt 403, { message: 'Could not find any giftlists' }.to_json
+            elsif list_id == 'following'
+              giftlists = GiftlistPolicy::AccountScope.new(@auth_account).following_giftlists(@auth_account)
+              JSON.pretty_generate(data: giftlists)
+            # rescue StandardError
+            #   routing.halt 403, { message: 'Could not find any giftlists' }.to_json
+            else
+              giftlist = GetGiftlistQuery.call(auth: @auth, giftlist: @req_giftlist)
+              { data: giftlist }.to_json
+            end
           rescue GetGiftlistQuery::ForbiddenError => e
             routing.halt 403, { message: e.message }.to_json
           rescue GetGiftlistQuery::NotFoundError => e
@@ -35,6 +35,26 @@ module GiftListApp
           rescue StandardError => e
             puts "FIND GIFTLIST ERROR: #{e.inspect}"
             routing.halt 500, { message: 'API server error' }.to_json
+          end
+
+          # POST api/v1/giftlists/[list_id]
+
+          routing.post do
+            req_data = JSON.parse(routing.body.read)
+            edit_giftinfo = EditGiftlist.call(
+              auth: @auth,
+              giftlist_data: @req_giftlist,
+              new_name: req_data['new_list_name']
+            )
+            { message: 'Giftlist edited', data: edit_giftinfo }.to_json
+          rescue GetGiftlistQuery::ForbiddenError => e
+            routing.halt 403, { message: e.message }.to_json
+          rescue GetGiftlistQuery::NotFoundError => e
+            routing.halt 404, { message: e.message }.to_json
+          rescue StandardError => e
+            puts "FIND GIFTLIST ERROR: #{e.inspect}"
+            routing.halt 500, { message: 'API server error' }.to_json
+          end
         end
 
         routing.on('giftinfos') do
