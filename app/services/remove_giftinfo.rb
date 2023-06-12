@@ -19,7 +19,7 @@ module GiftListApp
       )
       raise ForbiddenError unless policy.can_delete?
 
-      giftlist.remove_giftinfo(giftinfo)
+      giftinfo.delete
       giftinfo
     end
   end
