@@ -52,7 +52,7 @@ module GiftListApp
             puts "FIND GIFTLIST ERROR: #{e.inspect}"
             routing.halt 500, { message: 'API server error' }.to_json
           end
-          
+
           # DELETE api/v1/giftlists/[list_id]
 
           routing.delete do
@@ -119,7 +119,9 @@ module GiftListApp
             )
 
             { data: follower }.to_json
-          rescue AddFollower::ForbiddenError => e
+          rescue AddFollower::ForbiddenOwnerError => e
+            routing.halt 400, { message: e.message }.to_json
+          rescue AddFollower::ForbiddenFollowerError => e
             routing.halt 403, { message: e.message }.to_json
           rescue StandardError
             routing.halt 500, { message: 'API server error' }.to_json
