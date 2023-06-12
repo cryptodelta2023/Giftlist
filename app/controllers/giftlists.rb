@@ -7,10 +7,11 @@ module GiftListApp
   class Api < Roda
     route('giftlists') do |routing|
       routing.halt(403, UNAUTH_MSG) unless @auth_account
-
       @list_route = "#{@api_root}/giftlists"
       routing.on String do |list_id|
-        @req_giftlist = Giftlist.first(id: list_id)
+        if list_id != 'myown' || list_id != 'following'
+          @req_giftlist = Giftlist.first(id: list_id)
+        end
         routing.is do
           # GET api/v1/giftlists/[list_id]
           routing.get do
