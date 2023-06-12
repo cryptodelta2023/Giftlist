@@ -88,6 +88,11 @@ module GiftListApp
             { data: follower }.to_json
           rescue AddFollower::ForbiddenError => e
             routing.halt 403, { message: e.message }.to_json
+          rescue AddFollower::ForbiddenOwnerError => e
+            print(e.message)
+            routing.halt 403, { message: e.message }.to_json
+          rescue AddFollower::ForbiddenFollowerError => e
+            routing.halt 403, { message: e.message }.to_json
           rescue StandardError
             routing.halt 500, { message: 'API server error' }.to_json
           end

@@ -17,6 +17,16 @@ module GiftListApp
         (@requestor.can_add_followers? && @target.can_follow?)
     end
 
+    # shuan start
+    def owner?
+      @target.account_is_owner?
+    end
+
+    def follower?
+      @target.account_is_follower?
+    end
+    # end
+
     def can_remove?
       can_write? &&
         (@requestor.can_remove_followers? && target_is_follower?)
