@@ -40,18 +40,32 @@ module GiftListApp
 
           routing.post do
             req_data = JSON.parse(routing.body.read)
-            edit_giftinfo = EditGiftlist.call(
+            edit_giftlist = EditGiftlist.call(
               auth: @auth,
               giftlist_data: @req_giftlist,
               new_name: req_data['new_list_name']
             )
-            { message: 'Giftlist edited', data: edit_giftinfo }.to_json
-          rescue GetGiftlistQuery::ForbiddenError => e
+            { message: 'Giftlist edited', data: edit_giftlist }.to_json
+          rescue EditGiftlist::ForbiddenError => e
             routing.halt 403, { message: e.message }.to_json
-          rescue GetGiftlistQuery::NotFoundError => e
-            routing.halt 404, { message: e.message }.to_json
           rescue StandardError => e
             puts "FIND GIFTLIST ERROR: #{e.inspect}"
+            routing.halt 500, { message: 'API server error' }.to_json
+          end
+          
+          # DELETE api/v1/giftlists/[list_id]
+
+          routing.delete do
+
+            delete_giftlist = DeleteGiftlist.call(
+              auth: @auth,
+              giftlist_data: @req_giftlist
+            )
+            { message: 'Giftlist has been deleted',
+              data: delete_giftlist }.to_json
+          rescue DeleteGiftlist::ForbiddenError => e
+            routing.halt 403, { message: e.message }.to_json
+          rescue StandardError
             routing.halt 500, { message: 'API server error' }.to_json
           end
         end

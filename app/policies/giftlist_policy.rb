@@ -27,7 +27,7 @@ module GiftListApp
     end
 
     def can_add_giftinfos?
-      can_write? && (account_is_owner? || account_is_follower?)
+      can_write? && account_is_owner?
     end
 
     def can_remove_giftinfos?
