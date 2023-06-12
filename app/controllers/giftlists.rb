@@ -119,10 +119,8 @@ module GiftListApp
             )
 
             { data: follower }.to_json
-          rescue AddFollower::ForbiddenError => e
-            routing.halt 403, { message: e.message }.to_json
           rescue AddFollower::ForbiddenOwnerError => e
-            routing.halt 403, { message: e.message }.to_json
+            routing.halt 400, { message: e.message }.to_json
           rescue AddFollower::ForbiddenFollowerError => e
             routing.halt 403, { message: e.message }.to_json
           rescue StandardError

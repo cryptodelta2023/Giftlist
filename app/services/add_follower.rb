@@ -4,18 +4,11 @@ module GiftListApp
   # Add a follower to another owner's existing giftlist
   class AddFollower
     # Error for owner cannot be follower
-    class ForbiddenError < StandardError
-      def message
-        # if @policy.owner?
-        #   'You are not allowed to invite yourself as a follower'
-        # elsif @policy.follower?
-        #   'This follower is already on the list'
-        # else
-        #   'This email is not found'
-        # end
-        'You are not allowed to invite that person as a follower'
-      end
-    end
+    # class ForbiddenError < StandardError
+    #   def message
+    #     'You are not allowed to invite that person as a follower'
+    #   end
+    # end
 
     # Error for owner cannot be follower
     class ForbiddenOwnerError < StandardError
@@ -40,11 +33,9 @@ module GiftListApp
         raise ForbiddenOwnerError
       elsif policy.target_follower?
         raise ForbiddenFollowerError
-      elsif !policy.can_invite?
-        raise ForbiddenError
+      # elsif !policy.can_invite?
+      #   raise ForbiddenError
       end
-      # raise ForbiddenError unless policy.can_invite?
-
 
       giftlist.add_follower(invitee)
       invitee

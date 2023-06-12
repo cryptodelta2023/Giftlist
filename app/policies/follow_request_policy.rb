@@ -19,7 +19,7 @@ module GiftListApp
 
     # shuan start
     def target_owner?
-      @target.owner?
+      @target.can_add_followers?
     end
 
     def target_follower?

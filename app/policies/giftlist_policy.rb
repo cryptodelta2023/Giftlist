@@ -38,11 +38,6 @@ module GiftListApp
       can_write? && account_is_owner?
     end
 
-    # for ForbiddenOwnerError to use
-    def owner?
-      account_is_owner?
-    end
-
     def can_remove_followers?
       account_is_owner?
     end
