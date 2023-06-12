@@ -18,12 +18,12 @@ module GiftListApp
     end
 
     # shuan start
-    def owner?
-      @target.account_is_owner?
+    def target_owner?
+      @target.owner?
     end
 
-    def follower?
-      @target.account_is_follower?
+    def target_follower?
+      @giftlist.followers.include?(@target_account)
     end
     # end
 

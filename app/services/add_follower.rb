@@ -36,13 +36,15 @@ module GiftListApp
       policy = FollowRequestPolicy.new(
         giftlist, auth[:account], invitee, auth[:scope]
       )
-      if !policy.owner?
+      if policy.target_owner?
         raise ForbiddenOwnerError
-      elsif !policy.follower?
+      elsif policy.target_follower?
         raise ForbiddenFollowerError
       elsif !policy.can_invite?
         raise ForbiddenError
       end
+      # raise ForbiddenError unless policy.can_invite?
+
 
       giftlist.add_follower(invitee)
       invitee
