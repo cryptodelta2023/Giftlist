@@ -42,6 +42,6 @@ describe 'Test AddFollowers service' do
         giftlist: @giftlist,
         follower_email: @owner.email
       )
-    }).must_raise GiftListApp::AddFollower::ForbiddenError
+    }).must_raise GiftListApp::AddFollower::ForbiddenOwnerError
   end
 end
