@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/test_load_all.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/test_load_all.rb": {
         "lines": [
           null,
           null,
@@ -18,7 +18,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/require_app.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/require_app.rb": {
         "lines": [
           null,
           null,
@@ -39,7 +39,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/config/environments.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/config/environments.rb": {
         "lines": [
           null,
           null,
@@ -92,7 +92,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/lib/auth_scope.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/lib/auth_scope.rb": {
         "lines": [
           null,
           null,
@@ -147,7 +147,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/lib/auth_token.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/lib/auth_token.rb": {
         "lines": [
           null,
           null,
@@ -237,7 +237,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/lib/securable.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/lib/securable.rb": {
         "lines": [
           null,
           null,
@@ -279,7 +279,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/lib/key_stretch.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/lib/key_stretch.rb": {
         "lines": [
           null,
           null,
@@ -305,7 +305,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/lib/secure_db.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/lib/secure_db.rb": {
         "lines": [
           null,
           null,
@@ -333,7 +333,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/lib/signed_request.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/lib/signed_request.rb": {
         "lines": [
           null,
           null,
@@ -384,7 +384,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/models/account.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/models/account.rb": {
         "lines": [
           null,
           null,
@@ -443,7 +443,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/models/password.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/models/password.rb": {
         "lines": [
           null,
           null,
@@ -489,7 +489,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/models/giftinfo.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/models/giftinfo.rb": {
         "lines": [
           null,
           null,
@@ -538,7 +538,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/models/giftlist.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/models/giftlist.rb": {
         "lines": [
           null,
           null,
@@ -592,7 +592,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/models/github_account.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/models/github_account.rb": {
         "lines": [
           null,
           null,
@@ -614,7 +614,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/policies/account_policy.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/policies/account_policy.rb": {
         "lines": [
           null,
           null,
@@ -653,7 +653,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/policies/follow_request_policy.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/policies/follow_request_policy.rb": {
         "lines": [
           null,
           null,
@@ -702,7 +702,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/policies/giftinfo_policy.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/policies/giftinfo_policy.rb": {
         "lines": [
           null,
           null,
@@ -754,7 +754,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/policies/giftinfo_remove_policy.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/policies/giftinfo_remove_policy.rb": {
         "lines": [
           null,
           null,
@@ -782,7 +782,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/policies/giftlist_policy.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/policies/giftlist_policy.rb": {
         "lines": [
           null,
           null,
@@ -871,7 +871,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/policies/giftlist_scopes.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/policies/giftlist_scopes.rb": {
         "lines": [
           null,
           null,
@@ -919,7 +919,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/add_follower.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/add_follower.rb": {
         "lines": [
           null,
           null,
@@ -967,7 +967,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/authenticate_account.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/authenticate_account.rb": {
         "lines": [
           null,
           null,
@@ -1008,7 +1008,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/authorize_account.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/authorize_account.rb": {
         "lines": [
           null,
           null,
@@ -1045,7 +1045,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/authorize_sso.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/authorize_sso.rb": {
         "lines": [
           null,
           null,
@@ -1094,150 +1094,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/create_giftinfo.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/create_giftlist_for_owner.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/delete_giftlist.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          0,
-          null,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/edit_giftlist.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/get_giftinfo_query.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/get_giftlist_query.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/create_giftinfo.rb": {
         "lines": [
           null,
           null,
@@ -1260,8 +1117,8 @@
           null,
           1,
           0,
-          null,
           0,
+          null,
           0,
           null,
           0,
@@ -1270,7 +1127,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/remove_follower.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/create_giftlist_for_owner.rb": {
         "lines": [
           null,
           null,
@@ -1286,8 +1143,53 @@
           null,
           1,
           0,
+          null,
           0,
           null,
+          null,
+          null
+        ]
+      },
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/delete_giftlist.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/edit_giftlist.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
           0,
           null,
           null,
@@ -1300,7 +1202,74 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/remove_giftinfo.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/get_giftinfo_query.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/get_giftlist_query.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/remove_follower.rb": {
         "lines": [
           null,
           null,
@@ -1330,7 +1299,37 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/verify_registration.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/remove_giftinfo.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/anita/teamdelta_ruby/giftlist-API/app/services/verify_registration.rb": {
         "lines": [
           null,
           null,
@@ -1406,7 +1405,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/controllers/accounts.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/controllers/accounts.rb": {
         "lines": [
           null,
           null,
@@ -1458,7 +1457,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/controllers/app.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/controllers/app.rb": {
         "lines": [
           null,
           null,
@@ -1508,7 +1507,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/controllers/helpers.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/controllers/helpers.rb": {
         "lines": [
           null,
           null,
@@ -1542,7 +1541,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/controllers/auth.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/controllers/auth.rb": {
         "lines": [
           null,
           null,
@@ -1600,7 +1599,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/controllers/giftinfos.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/controllers/giftinfos.rb": {
         "lines": [
           null,
           null,
@@ -1640,7 +1639,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/controllers/giftlists.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/app/controllers/giftlists.rb": {
         "lines": [
           null,
           null,
@@ -1698,9 +1697,7 @@
           null,
           null,
           null,
-          null,
           0,
-          null,
           0,
           null,
           null,
@@ -1764,7 +1761,6 @@
           null,
           0,
           null,
-          0,
           0,
           null,
           0,
@@ -1825,7 +1821,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/api_accounts_spec.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/integration/api_accounts_spec.rb": {
         "lines": [
           null,
           null,
@@ -1897,7 +1893,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/api_auth_spec.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/integration/api_auth_spec.rb": {
         "lines": [
           null,
           null,
@@ -2002,7 +1998,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/api_followers_spec.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/integration/api_followers_spec.rb": {
         "lines": [
           null,
           null,
@@ -2094,7 +2090,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/api_giftinfos_spec.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/integration/api_giftinfos_spec.rb": {
         "lines": [
           null,
           null,
@@ -2223,7 +2219,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/api_giftlists_spec.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/integration/api_giftlists_spec.rb": {
         "lines": [
           null,
           null,
@@ -2356,7 +2352,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/api_spec.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/integration/api_spec.rb": {
         "lines": [
           null,
           null,
@@ -2372,7 +2368,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/service_add_follower_spec.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/integration/service_add_follower_spec.rb": {
         "lines": [
           null,
           null,
@@ -2414,7 +2410,6 @@
           null,
           0,
           0,
-          0,
           null,
           null,
           null,
@@ -2424,94 +2419,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/service_authenticate_account_spec.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/unit/auth_scope_spec.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null
-        ]
-      },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/unit/giftinfos_spec.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/integration/service_authenticate_account_spec.rb": {
         "lines": [
           null,
           null,
@@ -2529,6 +2437,93 @@
           1,
           0,
           0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/unit/auth_scope_spec.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/unit/giftinfos_spec.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
           0,
           null,
           0,
@@ -2556,7 +2551,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/unit/passwords_spec.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/unit/passwords_spec.rb": {
         "lines": [
           null,
           null,
@@ -2589,7 +2584,7 @@
           null
         ]
       },
-      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/unit/secure_db_spec.rb": {
+      "/home/anita/teamdelta_ruby/giftlist-API/spec/unit/secure_db_spec.rb": {
         "lines": [
           null,
           null,
@@ -2619,6 +2614,6 @@
         ]
       }
     },
-    "timestamp": 1687077171
+    "timestamp": 1687103530
   }
 }

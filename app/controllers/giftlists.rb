@@ -54,9 +54,7 @@ module GiftListApp
           end
 
           # DELETE api/v1/giftlists/[list_id]
-
           routing.delete do
-
             delete_giftlist = DeleteGiftlist.call(
               auth: @auth,
               giftlist_data: @req_giftlist
