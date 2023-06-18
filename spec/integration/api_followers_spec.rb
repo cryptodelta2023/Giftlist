@@ -51,7 +51,7 @@ describe 'Test Follower Handling' do
       put "api/v1/giftlists/#{@giftlist.id}/followers", req_data.to_json
       added = JSON.parse(last_response.body)['data']
 
-      _(last_response.status).must_equal 403
+      _(last_response.status).must_equal 400
       _(added).must_be_nil
     end
   end
