@@ -1,7 +1,7 @@
 {
   "RSpec": {
     "coverage": {
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/test_load_all.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/test_load_all.rb": {
         "lines": [
           null,
           null,
@@ -18,7 +18,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/require_app.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/require_app.rb": {
         "lines": [
           null,
           null,
@@ -39,7 +39,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/config/environments.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/config/environments.rb": {
         "lines": [
           null,
           null,
@@ -92,7 +92,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/lib/auth_scope.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/lib/auth_scope.rb": {
         "lines": [
           null,
           null,
@@ -147,7 +147,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/lib/auth_token.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/lib/auth_token.rb": {
         "lines": [
           null,
           null,
@@ -237,7 +237,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/lib/securable.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/lib/securable.rb": {
         "lines": [
           null,
           null,
@@ -279,7 +279,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/lib/key_stretch.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/lib/key_stretch.rb": {
         "lines": [
           null,
           null,
@@ -305,7 +305,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/lib/secure_db.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/lib/secure_db.rb": {
         "lines": [
           null,
           null,
@@ -333,7 +333,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/lib/signed_request.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/lib/signed_request.rb": {
         "lines": [
           null,
           null,
@@ -384,7 +384,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/models/account.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/models/account.rb": {
         "lines": [
           null,
           null,
@@ -443,7 +443,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/models/password.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/models/password.rb": {
         "lines": [
           null,
           null,
@@ -489,7 +489,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/models/giftinfo.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/models/giftinfo.rb": {
         "lines": [
           null,
           null,
@@ -538,7 +538,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/models/giftlist.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/models/giftlist.rb": {
         "lines": [
           null,
           null,
@@ -592,7 +592,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/models/github_account.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/models/github_account.rb": {
         "lines": [
           null,
           null,
@@ -614,7 +614,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/policies/account_policy.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/policies/account_policy.rb": {
         "lines": [
           null,
           null,
@@ -653,7 +653,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/policies/follow_request_policy.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/policies/follow_request_policy.rb": {
         "lines": [
           null,
           null,
@@ -702,7 +702,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/policies/giftinfo_policy.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/policies/giftinfo_policy.rb": {
         "lines": [
           null,
           null,
@@ -754,7 +754,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/policies/giftinfo_remove_policy.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/policies/giftinfo_remove_policy.rb": {
         "lines": [
           null,
           null,
@@ -782,7 +782,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/policies/giftlist_policy.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/policies/giftlist_policy.rb": {
         "lines": [
           null,
           null,
@@ -798,6 +798,10 @@
           1,
           0,
           null,
+          null,
+          null,
+          1,
+          0,
           null,
           null,
           1,
@@ -867,7 +871,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/policies/giftlist_scopes.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/policies/giftlist_scopes.rb": {
         "lines": [
           null,
           null,
@@ -915,7 +919,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/add_follower.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/add_follower.rb": {
         "lines": [
           null,
           null,
@@ -963,7 +967,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/authenticate_account.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/authenticate_account.rb": {
         "lines": [
           null,
           null,
@@ -1004,7 +1008,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/authorize_account.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/authorize_account.rb": {
         "lines": [
           null,
           null,
@@ -1041,7 +1045,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/authorize_sso.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/authorize_sso.rb": {
         "lines": [
           null,
           null,
@@ -1090,150 +1094,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/create_giftinfo.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/create_giftlist_for_owner.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/delete_giftlist.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          null,
-          0,
-          null,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/edit_giftlist.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          null,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/get_giftinfo_query.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          1,
-          0,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          0,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/get_giftlist_query.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/create_giftinfo.rb": {
         "lines": [
           null,
           null,
@@ -1256,8 +1117,8 @@
           null,
           1,
           0,
-          null,
           0,
+          null,
           0,
           null,
           0,
@@ -1266,7 +1127,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/remove_follower.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/create_giftlist_for_owner.rb": {
         "lines": [
           null,
           null,
@@ -1282,8 +1143,54 @@
           null,
           1,
           0,
+          null,
           0,
           null,
+          null,
+          null
+        ]
+      },
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/delete_giftlist.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          null,
+          0,
+          null,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/edit_giftlist.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
           0,
           null,
           null,
@@ -1296,7 +1203,74 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/remove_giftinfo.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/get_giftinfo_query.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/get_giftlist_query.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          null,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/remove_follower.rb": {
         "lines": [
           null,
           null,
@@ -1326,7 +1300,37 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/services/verify_registration.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/remove_giftinfo.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          0,
+          null,
+          null,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/services/verify_registration.rb": {
         "lines": [
           null,
           null,
@@ -1402,7 +1406,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/controllers/accounts.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/controllers/accounts.rb": {
         "lines": [
           null,
           null,
@@ -1454,7 +1458,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/controllers/app.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/controllers/app.rb": {
         "lines": [
           null,
           null,
@@ -1504,7 +1508,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/controllers/helpers.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/controllers/helpers.rb": {
         "lines": [
           null,
           null,
@@ -1538,7 +1542,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/controllers/auth.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/controllers/auth.rb": {
         "lines": [
           null,
           null,
@@ -1596,7 +1600,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/controllers/giftinfos.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/controllers/giftinfos.rb": {
         "lines": [
           null,
           null,
@@ -1636,7 +1640,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/app/controllers/giftlists.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/app/controllers/giftlists.rb": {
         "lines": [
           null,
           null,
@@ -1761,6 +1765,7 @@
           0,
           null,
           0,
+          0,
           null,
           0,
           null,
@@ -1820,7 +1825,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/integration/api_accounts_spec.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/api_accounts_spec.rb": {
         "lines": [
           null,
           null,
@@ -1892,7 +1897,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/integration/api_auth_spec.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/api_auth_spec.rb": {
         "lines": [
           null,
           null,
@@ -1997,7 +2002,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/integration/api_followers_spec.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/api_followers_spec.rb": {
         "lines": [
           null,
           null,
@@ -2089,7 +2094,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/integration/api_giftinfos_spec.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/api_giftinfos_spec.rb": {
         "lines": [
           null,
           null,
@@ -2218,7 +2223,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/integration/api_giftlists_spec.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/api_giftlists_spec.rb": {
         "lines": [
           null,
           null,
@@ -2351,7 +2356,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/integration/api_spec.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/api_spec.rb": {
         "lines": [
           null,
           null,
@@ -2367,7 +2372,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/integration/service_add_follower_spec.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/service_add_follower_spec.rb": {
         "lines": [
           null,
           null,
@@ -2409,6 +2414,7 @@
           null,
           0,
           0,
+          0,
           null,
           null,
           null,
@@ -2418,94 +2424,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/integration/service_authenticate_account_spec.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          0,
-          null,
-          0,
-          0,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null,
-          1,
-          0,
-          0,
-          null,
-          null,
-          null,
-          null,
-          null
-        ]
-      },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/unit/auth_scope_spec.rb": {
-        "lines": [
-          null,
-          null,
-          1,
-          null,
-          1,
-          1,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null,
-          1,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          0,
-          null,
-          null
-        ]
-      },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/unit/giftinfos_spec.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/integration/service_authenticate_account_spec.rb": {
         "lines": [
           null,
           null,
@@ -2523,6 +2442,93 @@
           1,
           0,
           0,
+          null,
+          null,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
+          null,
+          null,
+          null,
+          null,
+          null
+        ]
+      },
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/unit/auth_scope_spec.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null,
+          1,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          0,
+          null,
+          null
+        ]
+      },
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/unit/giftinfos_spec.rb": {
+        "lines": [
+          null,
+          null,
+          1,
+          null,
+          1,
+          1,
+          0,
+          null,
+          0,
+          0,
+          null,
+          null,
+          null,
+          1,
+          0,
+          0,
           0,
           null,
           0,
@@ -2550,7 +2556,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/unit/passwords_spec.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/unit/passwords_spec.rb": {
         "lines": [
           null,
           null,
@@ -2583,7 +2589,7 @@
           null
         ]
       },
-      "/Users/twohorse/Desktop/ISS/Security/giftlist/spec/unit/secure_db_spec.rb": {
+      "/Users/shuan/Documents/grad_2/ServiceSecurity/group/Giftlist/spec/unit/secure_db_spec.rb": {
         "lines": [
           null,
           null,
@@ -2613,6 +2619,6 @@
         ]
       }
     },
-    "timestamp": 1686941276
+    "timestamp": 1687077171
   }
 }

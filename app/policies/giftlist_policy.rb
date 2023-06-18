@@ -22,6 +22,10 @@ module GiftListApp
       can_write? && account_is_owner?
     end
 
+    def owner?
+      account_is_owner?
+    end
+
     def can_leave?
       account_is_follower?
     end
