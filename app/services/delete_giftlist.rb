@@ -11,7 +11,6 @@ module GiftListApp
     end
 
     def self.call(auth:, giftlist_data:)
-
       policy = GiftlistPolicy.new(
         auth[:account], giftlist_data, auth[:scope]
       )
